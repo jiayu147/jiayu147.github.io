@@ -1,0 +1,20 @@
+/* Collaborator profiles follow the Research heading-and-image layout. */
+.collaborators-page .section-hero-photo { object-position: center 65%; }
+.collaborators-page .collaborator-section { padding-bottom: 40px; }
+.collaborator-layout {
+    display: grid;
+    grid-template-columns: minmax(0, .3fr) minmax(0, .7fr);
+    gap: 14px 28px;
+    align-items: start;
+}
+.collaborators-page .collaborator-layout > h2 { grid-column: 1 / -1; margin-bottom: 0; }
+.collaborator-figure { width: 100%; max-width: 320px; min-width: 0; margin: 0; }
+.collaborator-portrait { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 20%; }
+.portrait-dan { object-position: center top; }
+.collaborator-copy { min-width: 0; }
+.collaborators-page .collaborator-copy p { margin-bottom: 12px; }
+.collaborators-page .collaborator-copy .collaborator-contact { margin-bottom: 0; }
+@media (max-width: 768px) {
+    .collaborator-layout { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    .collaborators-page .collaborator-section { padding-bottom: 32px; }
+}
