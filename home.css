@@ -1,0 +1,11 @@
+/* Styles used only by Home and its post archive. */
+.home-overview .overview-copy h2 { margin-bottom: 0; }
+.latest-section { padding-top: 48px; padding-bottom: 60px; }
+.posts-empty { padding: 24px 0; border-top: 1px solid #e0e5dd; color: #778178; font-size: 15px; }
+.archive-page { min-height: calc(100vh - 255px); padding-top: 64px; padding-bottom: 64px; }
+.archive-page h1 { margin-bottom: 28px; color: var(--primary-color); font-size: clamp(36px, 5vw, 52px); font-weight: 400; }
+.archive-page .text-link { margin-top: 20px; }
+@media (max-width: 768px) {
+    .latest-section { padding-top: 36px; padding-bottom: 44px; }
+    .archive-page { padding-top: 40px; padding-bottom: 40px; }
+}
