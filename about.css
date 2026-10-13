@@ -2,8 +2,8 @@
 .about-page .section-hero-photo {
     object-fit: contain;
     object-position: right center;
-    -webkit-mask-image: linear-gradient(90deg, transparent 40%, #000 64%);
-    mask-image: linear-gradient(90deg, transparent 40%, #000 64%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 50%, #000 64%);
+    mask-image: linear-gradient(90deg, transparent 50%, #000 64%);
 }
 .about-page .profile-section { display: block; }
 .about-portrait { width: min(100%, 600px); margin: 0 auto 28px; }
