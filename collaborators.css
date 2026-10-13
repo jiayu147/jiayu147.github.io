@@ -3,12 +3,12 @@
 .collaborators-page .collaborator-section { padding-bottom: 40px; }
 .collaborator-layout {
     display: grid;
-    grid-template-columns: minmax(0, .3fr) minmax(0, .7fr);
+    grid-template-columns: minmax(0, 120px) minmax(0, 1fr);
     gap: 14px 28px;
     align-items: start;
 }
 .collaborators-page .collaborator-layout > h2 { grid-column: 1 / -1; margin-bottom: 0; }
-.collaborator-figure { width: 100%; max-width: 240px; min-width: 0; margin: 0; }
+.collaborator-figure { width: 100%; max-width: 120px; min-width: 0; margin: 0; }
 .collaborator-portrait { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; object-position: center 20%; }
 .portrait-dan { object-position: center top; }
 .collaborator-copy { min-width: 0; }
