@@ -1,0 +1,27 @@
+/* Enlarge body copy by one pixel across the coastal site. */
+.site-page .main-content { font-size: 17px; }
+.site-page .section-hero-copy p,
+.site-page .publication-hero-copy p { font-size: 18px; }
+.site-page.home-body { --home-copy-font-size: 18px; }
+.site-page .standard-page .content-section p,
+.site-page .standard-page .content-section ul,
+.site-page .posts-empty { font-size: 16px; }
+.site-page .standard-page .education-item p,
+.site-page .standard-page .contact-info p,
+.site-page .media-placeholder,
+.site-page .about-portrait figcaption { font-size: 15px; }
+.site-page .overview-copy > p:not(.eyebrow) { font-size: 17px; }
+.site-page .focus-panel li { font-size: 19px; }
+.site-page .text-link { font-size: 15px; }
+.site-page .publications-page .publication-item .authors,
+.site-page .publications-page .publication-item .journal { font-size: 15px; }
+.site-page .publications-page .publication-item .doi { font-size: 14px; }
+.site-page .footer-inner p { font-size: 13px; }
+.site-page .footer-links a { font-size: 14px; }
+@media (max-width: 768px) {
+    .site-page .section-hero-copy p,
+    .site-page .publication-hero-copy p { font-size: 16px; }
+    .site-page.home-body { --home-copy-font-size: 16px; }
+    .site-page .publications-page .publication-item .authors,
+    .site-page .publications-page .publication-item .journal { font-size: 14px; }
+}
