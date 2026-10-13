@@ -1,0 +1,16 @@
+/* Dated news rows shared by Home and Moments. */
+.news-list .news-item { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 28px; margin: 0; padding: 24px 0; border: 0; border-bottom: 1px solid #e0e5dd; background: transparent; box-shadow: none; scroll-margin-top: 100px; }
+.news-list .news-item:first-child { padding-top: 0; }
+.news-list .news-item:last-child { border-bottom: 0; }
+.news-meta { display: flex; flex-direction: column; gap: 5px; color: #66766c; font-size: 14px; line-height: 1.6; }
+.news-meta time { color: #254b40; font-size: 15px; font-weight: 600; }
+.news-copy { min-width: 0; }
+.site-page .news-list .news-copy h3 { margin: 0 0 10px; color: #254b40; font-size: 22px; font-weight: 400; line-height: 1.4; }
+.news-copy h3 a { color: inherit; text-decoration: none; }
+.news-copy h3 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.site-page .news-list .news-copy p { max-width: none; margin: 0; font-size: 16px; line-height: 1.75; color: #596c61; }
+@media (max-width: 768px) {
+    .news-list .news-item { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 22px 0; }
+    .news-meta { flex-direction: row; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; }
+    .site-page .news-list .news-copy h3 { font-size: 20px; }
+}
