@@ -1,0 +1,25 @@
+/* Three research topics share the coastal template and a consistent image size. */
+.research-page .section-hero-copy p + p { margin-top: 12px; }
+.research-page .research-topic { padding-bottom: 40px; }
+.research-topic-layout {
+    display: grid;
+    grid-template-columns: minmax(0, .38fr) minmax(0, .62fr);
+    gap: 32px;
+    align-items: start;
+}
+.research-figure { min-width: 0; margin: 0; }
+.research-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center;
+}
+.research-image-diagram { object-fit: contain; background: #fff; }
+.research-copy { min-width: 0; }
+.research-page .research-copy p { margin-bottom: 0; }
+@media (max-width: 768px) {
+    .research-topic-layout { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    .research-page .research-topic { padding-bottom: 32px; }
+}
