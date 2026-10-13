@@ -1,4 +1,38 @@
 document.addEventListener('DOMContentLoaded', function () {
+    async function updateLatestPosts() {
+        const latest = document.querySelector('.home-page .news-list');
+        if (!latest) return;
+        try {
+            const response = await fetch('archive.html', { cache: 'no-cache' });
+            if (!response.ok) return;
+            const archive = new DOMParser().parseFromString(await response.text(), 'text/html');
+            const posts = Array.from(archive.querySelectorAll('.news-list .news-item'))
+                .filter(post => post.id && post.querySelector('h3') &&
+                    /^\d{4}-\d{2}-\d{2}$/.test(post.querySelector('time')?.getAttribute('datetime') || ''))
+                .sort((a, b) => b.querySelector('time').getAttribute('datetime')
+                    .localeCompare(a.querySelector('time').getAttribute('datetime')))
+                .slice(0, 3);
+            if (!posts.length) return;
+            const entries = posts.map(post => {
+                const entry = post.cloneNode(true);
+                entry.id = 'home-' + post.id;
+                const heading = entry.querySelector('h3');
+                heading.id = entry.id + '-title';
+                entry.setAttribute('aria-labelledby', heading.id);
+                const link = document.createElement('a');
+                link.setAttribute('href', 'archive.html#' + encodeURIComponent(post.id));
+                link.append(...Array.from(heading.childNodes));
+                heading.replaceChildren(link);
+                return entry;
+            });
+            latest.replaceChildren(...entries);
+            latest.dataset.source = 'moments';
+        } catch {
+            // Keep the three embedded posts available if the archive cannot be loaded.
+        }
+    }
+    updateLatestPosts();
+
     const button = document.querySelector('.hamburger');
     const menu = document.querySelector('.nav-menu');
     const mobile = window.matchMedia('(max-width: 768px)');
