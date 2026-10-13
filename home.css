@@ -1,11 +1,59 @@
 /* Styles used only by Home and its post archive. */
-.home-overview .overview-copy h2 { margin-bottom: 0; }
+.home-body { --accent-color: #527c69; }
+.home-body .home-hero {
+    background: #163d3a;
+    box-shadow: inset 0 0 80px rgba(9, 32, 28, .2);
+}
+.home-body .home-hero-photo {
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 45%;
+}
+.home-body .home-hero::before {
+    z-index: -1;
+    opacity: 1;
+    background: linear-gradient(100deg, rgba(16, 53, 47, .94) 0%, rgba(21, 61, 53, .83) 43%, rgba(30, 73, 60, .36) 78%, rgba(30, 73, 60, .2) 100%),
+        linear-gradient(0deg, rgba(12, 40, 34, .3), transparent 50%);
+}
+.home-body .home-hero-inner { width: 100%; max-width: 660px; }
+.home-body .home-hero h1 {
+    max-width: 660px;
+    font-size: clamp(30px, 3.6vw, 44px);
+    line-height: 1.15;
+    letter-spacing: -.025em;
+    text-shadow: 0 2px 16px rgba(8, 27, 22, .3);
+}
+.home-body .home-hero h1 span { display: block; white-space: nowrap; }
+.home-body .home-hero-copy { max-width: 465px; }
+.home-body .home-overview .overview-copy h2,
+.home-body .focus-panel .eyebrow {
+    margin-bottom: 0;
+    color: #66766c;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    line-height: 1.4;
+}
+.home-body .home-overview .overview-copy h2 { max-width: 420px; }
+.home-body .focus-panel .eyebrow { margin-bottom: 13px; }
 .latest-section { padding-top: 48px; padding-bottom: 60px; }
 .posts-empty { padding: 24px 0; border-top: 1px solid #e0e5dd; color: #778178; font-size: 15px; }
 .archive-page { min-height: calc(100vh - 255px); padding-top: 64px; padding-bottom: 64px; }
 .archive-page h1 { margin-bottom: 28px; color: var(--primary-color); font-size: clamp(36px, 5vw, 52px); font-weight: 400; }
 .archive-page .text-link { margin-top: 20px; }
 @media (max-width: 768px) {
+    .home-body .home-hero { padding: 42px 24px; }
+    .home-body .home-hero h1 { font-size: clamp(17px, 5.05vw, 30px); }
+    .home-body .home-hero-photo { object-position: 58% center; }
+    .home-body .home-hero::before {
+        background: linear-gradient(100deg, rgba(16, 53, 47, .9), rgba(21, 61, 53, .58)),
+            linear-gradient(0deg, rgba(12, 40, 34, .25), transparent 55%);
+    }
     .latest-section { padding-top: 36px; padding-bottom: 44px; }
     .archive-page { padding-top: 40px; padding-bottom: 40px; }
 }
