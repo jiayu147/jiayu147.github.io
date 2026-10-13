@@ -1,0 +1,109 @@
+/* Shared Home/Publications template for every section of the site. */
+.site-page {
+    --primary-color: #254b40;
+    --secondary-color: #a8b99a;
+    --accent-color: #527c69;
+    --text-color: #34423b;
+    --light-bg: #f4f6f1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.site-page > .navbar, .site-page > .footer { flex-shrink: 0; }
+.site-page > .main-content { flex: 1; }
+.site-page .hamburger { padding: 8px; border: 0; background: transparent; }
+.site-page a:focus-visible, .site-page button:focus-visible { outline: 2px solid #527c69; outline-offset: 4px; }
+.site-page .nav-menu a { white-space: nowrap; }
+.site-page .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.site-page .hamburger.active span:nth-child(2) { opacity: 0; }
+.site-page .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+.standard-page { min-height: 0; }
+.section-hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    max-width: 1120px;
+    min-height: 370px;
+    margin: 48px auto 0;
+    padding: 56px 7%;
+    background: #163d3a;
+    color: #fff;
+}
+.section-hero-photo {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    width: 66%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: saturate(.72) brightness(.86);
+}
+.section-hero::after {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    content: '';
+    pointer-events: none;
+    background: linear-gradient(90deg, #163d3a 0%, #163d3a 31%, rgba(22, 61, 58, .87) 40%, rgba(22, 61, 58, .28) 70%, rgba(22, 61, 58, .1) 100%);
+}
+.section-hero-copy { position: relative; z-index: 2; width: 42%; }
+.section-hero h1 { margin: 0 0 17px; font-size: clamp(36px, 4vw, 48px); font-weight: 400; letter-spacing: -.025em; line-height: 1.15; }
+.section-hero-copy p { color: #e4ebe4; font-size: 17px; line-height: 1.65; }
+.standard-page .content-section { margin: 0; padding: 0 0 32px; background: #fff; }
+.standard-page .section-hero + .content-section { padding-top: 38px; }
+.standard-page .container { width: min(100% - 48px, 1120px); max-width: 1120px; margin: 0 auto; padding: 0; }
+.standard-page .content-section h2 { margin: 0 0 14px; padding: 0; border: 0; color: var(--primary-color); font-size: 26px; font-weight: 400; line-height: 1.25; text-align: left; }
+.standard-page .content-section h3 { margin: 0 0 8px; color: var(--primary-color); font-size: 20px; font-weight: 400; line-height: 1.4; }
+.standard-page .content-section p { max-width: none; margin: 0 0 12px; font-size: 15px; line-height: 1.75; }
+.standard-page .content-section ul { margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.8; }
+.standard-page .content-section a { color: var(--accent-color); overflow-wrap: anywhere; text-underline-offset: 3px; }
+.standard-page .content-section .text-link { margin-top: 12px; }
+.standard-page .project-card, .standard-page .education-item { margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; transform: none; }
+.standard-page .project-card + .project-card { margin-top: 28px; }
+.standard-page .education-item + .education-item { margin-top: 22px; }
+.standard-page .education-item p { margin-bottom: 4px; color: #596c61; font-size: 14px; }
+.standard-page .project-card img { display: block; width: 100%; max-width: 760px; height: auto; margin: 16px auto 0; }
+.standard-page .project-gallery { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.standard-page .project-gallery img { max-width: none; }
+.standard-page .profile-section { max-width: none; margin: 0; gap: 32px; }
+.standard-page .profile-image { flex: 0 0 180px; }
+.profile-initials { display: grid; place-items: center; width: 180px; height: 180px; background: #e8eee5; color: #254b40; font-family: Georgia, 'Times New Roman', serif; font-size: 58px; }
+.standard-page .profile-info { min-width: 0; }
+.standard-page .profile-info > p { margin-bottom: 4px; }
+.standard-page .contact-info { margin-top: 20px; padding: 0; background: transparent; }
+.standard-page .contact-info p { margin-bottom: 6px; font-size: 14px; }
+.collaboration-columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; margin-top: 24px; }
+.standard-page .muted-copy, .standard-page .posts-empty { color: #66766c; border: 0; padding: 0; }
+.standard-page .team-grid, .standard-page .species-grid, .standard-page .gallery { gap: 24px; margin-top: 20px; }
+.standard-page .team-member, .standard-page .species-card { padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.standard-page .species-card .info { padding: 16px 0; }
+.media-placeholder { display: grid; place-items: center; min-height: 160px; background: #e8eee5; color: #66766c; font-size: 14px; }
+@media (max-width: 1168px) {
+    .section-hero { margin-right: 24px; margin-left: 24px; }
+}
+@media (max-width: 900px) {
+    .section-hero { margin-top: 28px; }
+}
+@media (max-width: 768px) {
+    .section-hero { flex-direction: column; align-items: stretch; min-height: 0; margin: 18px 14px 0; padding: 0; }
+    .section-hero-copy { width: 100%; padding: 28px 24px 22px; }
+    .section-hero h1 { margin-bottom: 12px; font-size: 36px; }
+    .section-hero-copy p { font-size: 15px; }
+    .section-hero-photo { position: relative; order: 1; width: 100%; height: auto; object-fit: contain; }
+    .section-hero::after { background: linear-gradient(180deg, #163d3a 0%, rgba(22, 61, 58, .86) 29%, rgba(22, 61, 58, .12) 60%, rgba(22, 61, 58, .1) 100%); }
+    .standard-page .section-hero + .content-section { padding-top: 28px; }
+    .standard-page .content-section { padding-bottom: 28px; }
+    .standard-page .content-section h2 { font-size: 24px; }
+    .standard-page .content-section h3 { font-size: 18px; }
+    .standard-page .project-gallery, .collaboration-columns { grid-template-columns: 1fr; gap: 20px; }
+    .standard-page .profile-section { align-items: flex-start; gap: 24px; }
+    .standard-page .profile-image { flex: none; }
+    .profile-initials { width: 120px; height: 120px; font-size: 44px; }
+}
+@media (max-width: 480px) {
+    .standard-page .container { width: min(100% - 32px, 1120px); }
+}

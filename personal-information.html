@@ -3,41 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Information - Jiayu147 Ecology</title>
+    <title>About | Jiayu147</title>
     <link rel="stylesheet" href="styles.css?v=20261013c">
+    <link rel="stylesheet" href="site-theme.css?v=20261013e">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
-<body>
-    <nav class="navbar">
+<body class="site-page">
+    <nav class="navbar" aria-label="Primary navigation">
         <div class="nav-container">
             <a class="nav-logo" href="index.html"><span>Jiayu147</span><small>Coastal plant ecology</small></a>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="site-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="research.html">Research</a></li>
                 <li><a href="archive.html">Moment</a></li>
                 <li><a href="publications.html">Publications</a></li>
                 <li><a href="team.html">Collaborators</a></li>
-                <li><a href="personal-information.html" class="active">About</a></li>
+                <li><a href="personal-information.html" class="active" aria-current="page">About</a></li>
             </ul>
-            <div class="hamburger">
+            <button class="hamburger" type="button" aria-label="Open navigation menu" aria-controls="site-menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
-    <main class="main-content">
-        <section class="page-header">
-            <h1>Personal Information</h1>
+    <main class="main-content standard-page">
+        <section class="section-hero" aria-labelledby="page-heading">
+            <img class="section-hero-photo" src="assets/coastal-ecotone.jpg" alt="" fetchpriority="high" width="2048" height="1365">
+            <div class="section-hero-copy">
+                <h1 id="page-heading">About</h1>
+                <p>College of the Environment and Ecology, Xiamen University</p>
+            </div>
         </section>
 
         <section class="content-section">
             <div class="container">
                 <div class="profile-section">
-                    <div class="profile-image">
-                        <!-- Upload your photo and replace the src -->
-                        <img src="profile.jpg" alt="Jiayu Wang">
-                    </div>
+                    <div class="profile-image"><div class="profile-initials" aria-hidden="true">JW</div></div>
                     <div class="profile-info">
                         <h2>Dr. Jiayu Wang</h2>
                         <p>Position: Postdoctoral Researcher</p>
@@ -46,11 +49,11 @@
                         
                         <div class="contact-info">
                             <h3>Contact Information</h3>
-                            <p>📧 Email: wangjy147@foxmail.com</p>
-                            <p>📍 Office: Jinquan Building B406, Xiang'an Campus</p>
-                            <p>🏫 Address: College of the Environment and Ecology, Xiamen University, Xiamen, Fujian 361102, China</p>
-                            <p>🔗 ResearchGate: <a href="https://www.researchgate.net/profile/Jiayu-Wang-43" target="_blank">Profile</a></p>
-                            <p>🐦 Twitter: <a href="https://twitter.com/jiayu147" target="_blank">@jiayu147</a></p>
+                            <p>Email: <a href="mailto:wangjy147@foxmail.com">wangjy147@foxmail.com</a></p>
+                            <p>Office: Jinquan Building B406, Xiang'an Campus</p>
+                            <p>Address: College of the Environment and Ecology, Xiamen University, Xiamen, Fujian 361102, China</p>
+                            <p>ResearchGate: <a href="https://www.researchgate.net/profile/Jiayu-Wang-43" target="_blank" rel="noopener noreferrer">Profile</a></p>
+                            <p>Twitter: <a href="https://twitter.com/jiayu147" target="_blank" rel="noopener noreferrer">@jiayu147</a></p>
                         </div>
                     </div>
                 </div>
@@ -60,19 +63,19 @@
         <section class="content-section">
             <div class="container">
                 <h2>Education</h2>
-                <div class="education-item" style="margin-bottom: 30px; padding: 20px; background-color: #f5f5f5; border-radius: 10px;">
+                <div class="education-item">
                     <h3>PhD in Ecology</h3>
                     <p><strong>Institution:</strong> College of the Environment and Ecology, Xiamen University</p>
                     <p><strong>Year:</strong> 2020 - 2024</p>
                 </div>
                 
-                <div class="education-item" style="margin-bottom: 30px; padding: 20px; background-color: #f5f5f5; border-radius: 10px;">
+                <div class="education-item">
                     <h3>Master Degree in Ecology</h3>
                     <p><strong>Institution:</strong> College of the Environment and Ecology, Xiamen University</p>
                     <p><strong>Year:</strong> 2017 - 2020</p>
                 </div>
                 
-                <div class="education-item" style="margin-bottom: 30px; padding: 20px; background-color: #f5f5f5; border-radius: 10px;">
+                <div class="education-item">
                     <h3>Bachelor Degree in Forestry</h3>
                     <p><strong>Institution:</strong> School of Forestry, Northeast Forestry University</p>
                     <p><strong>Year:</strong> 2013 - 2017</p>
@@ -83,7 +86,7 @@
         <section class="content-section">
             <div class="container">
                 <h2>Research Interests</h2>
-                <ul style="max-width: 900px; margin: 0 auto; line-height: 2;">
+                <ul>
                     <li>Coastal wetland ecology</li>
                     <li>Plant invasion ecology</li>
                     <li>Plant clonal growth</li>
@@ -94,13 +97,14 @@
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Jiayu147 Ecology. College of the Environment and Ecology, Xiamen University</p>
-            <p>Contact: wangjy147@foxmail.com</p>
+    <footer class="footer home-footer">
+        <div class="content-wrap footer-inner">
+            <div><strong>Jiayu Wang</strong><p>College of the Environment and Ecology, Xiamen University</p></div>
+            <div class="footer-links"><a href="mailto:wangjy147@foxmail.com">Email</a><a href="personal-information.html">About</a></div>
+            <p class="copyright">© 2026 Jiayu Wang</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20261013e"></script>
 </body>
 </html>

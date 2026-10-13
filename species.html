@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Species - Jiayu147 Ecology</title>
     <link rel="stylesheet" href="styles.css?v=20261013c">
+    <link rel="stylesheet" href="site-theme.css?v=20261013e">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
-<body>
-    <nav class="navbar">
+<body class="site-page">
+    <nav class="navbar" aria-label="Primary navigation">
         <div class="nav-container">
             <a class="nav-logo" href="index.html"><span>Jiayu147</span><small>Coastal plant ecology</small></a>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="site-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="research.html">Research</a></li>
                 <li><a href="archive.html">Moment</a></li>
@@ -18,30 +20,33 @@
                 <li><a href="team.html">Collaborators</a></li>
                 <li><a href="personal-information.html">About</a></li>
             </ul>
-            <div class="hamburger">
+            <button class="hamburger" type="button" aria-label="Open navigation menu" aria-controls="site-menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
-    <main class="main-content">
-        <section class="page-header">
-            <h1>Species</h1>
-            <p class="tagline">Key Species in My Research</p>
+    <main class="main-content standard-page">
+        <section class="section-hero" aria-labelledby="page-heading">
+            <img class="section-hero-photo" src="assets/coastal-ecotone.jpg" alt="" fetchpriority="high" width="2048" height="1365">
+            <div class="section-hero-copy">
+                <h1 id="page-heading">Species</h1>
+                <p>Key Species in My Research</p>
+            </div>
         </section>
 
         <section class="content-section">
             <div class="container">
-                <p style="text-align: center; max-width: 900px; margin: 0 auto 40px;">
+                <p>
                     My research focuses on several key plant species that play important roles in coastal wetland ecosystems. 
                     Here are some of the most important species I study.
                 </p>
 
                 <div class="species-grid">
                     <div class="species-card">
-                        <img src="https://via.placeholder.com/400x250?text=Spartina+alterniflora" alt="Spartina alterniflora">
+                        <div class="media-placeholder">Image to be added</div>
                         <div class="info">
                             <h3><em>Spartina alterniflora</em></h3>
                             <p><strong>Common Name:</strong> Smooth Cordgrass</p>
@@ -52,7 +57,7 @@
                     </div>
 
                     <div class="species-card">
-                        <img src="https://via.placeholder.com/400x250?text=Kandelia+obovata" alt="Kandelia obovata">
+                        <div class="media-placeholder">Image to be added</div>
                         <div class="info">
                             <h3><em>Kandelia obovata</em></h3>
                             <p><strong>Common Name:</strong> River Mangrove</p>
@@ -63,7 +68,7 @@
                     </div>
 
                     <div class="species-card">
-                        <img src="https://via.placeholder.com/400x250?text=Phragmites+australis" alt="Phragmites australis">
+                        <div class="media-placeholder">Image to be added</div>
                         <div class="info">
                             <h3><em>Phragmites australis</em></h3>
                             <p><strong>Common Name:</strong> Common Reed</p>
@@ -74,7 +79,7 @@
                     </div>
 
                     <div class="species-card">
-                        <img src="https://via.placeholder.com/400x250?text=Scirpus+ mariqueter" alt="Scirpus mariqueter">
+                        <div class="media-placeholder">Image to be added</div>
                         <div class="info">
                             <h3><em>Scirpus mariqueter</em></h3>
                             <p><strong>Common Name:</strong> Sea Clubrush</p>
@@ -85,7 +90,7 @@
                     </div>
 
                     <div class="species-card">
-                        <img src="https://via.placeholder.com/400x250?text=Avicennia+marina" alt="Avicennia marina">
+                        <div class="media-placeholder">Image to be added</div>
                         <div class="info">
                             <h3><em>Avicennia marina</em></h3>
                             <p><strong>Common Name:</strong> Grey Mangrove</p>
@@ -101,21 +106,21 @@
         <section class="content-section">
             <div class="container">
                 <h2>Study Sites</h2>
-                <p style="text-align: center; margin-bottom: 30px;">My research is conducted at several field sites across China's coast</p>
+                <p>My research is conducted at several field sites across China's coast</p>
                 
-                <div style="max-width: 900px; margin: 0 auto;">
-                    <div style="margin-bottom: 30px; padding: 20px; background-color: #f5f5f5; border-radius: 10px;">
-                        <h3 style="color: #2c5f2d; margin-bottom: 10px;">Min River Estuary, Fujian</h3>
+                <div>
+                    <div>
+                        <h3>Min River Estuary, Fujian</h3>
                         <p>A major study site for <em>Spartina alterniflora</em> invasion and management. This site features extensive salt marshes and mangrove forests.</p>
                     </div>
                     
-                    <div style="margin-bottom: 30px; padding: 20px; background-color: #f5f5f5; border-radius: 10px;">
-                        <h3 style="color: #2c5f2d; margin-bottom: 10px;">Zhangjiang River Estuary, Fujian</h3>
+                    <div>
+                        <h3>Zhangjiang River Estuary, Fujian</h3>
                         <p>A site for studying mangrove restoration and the interactions between native and invasive species.</p>
                     </div>
                     
-                    <div style="margin-bottom: 30px; padding: 20px; background-color: #f5f5f5; border-radius: 10px;">
-                        <h3 style="color: #2c5f2d; margin-bottom: 10px;">[Add More Sites]</h3>
+                    <div>
+                        <h3>[Add More Sites]</h3>
                         <p>Description of additional field sites where you conduct research.</p>
                     </div>
                 </div>
@@ -123,13 +128,14 @@
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Jiayu147 Ecology. Department of Ecology, Xiamen University</p>
-            <p>Contact: [Your Email]</p>
+    <footer class="footer home-footer">
+        <div class="content-wrap footer-inner">
+            <div><strong>Jiayu Wang</strong><p>College of the Environment and Ecology, Xiamen University</p></div>
+            <div class="footer-links"><a href="mailto:wangjy147@foxmail.com">Email</a><a href="personal-information.html">About</a></div>
+            <p class="copyright">© 2026 Jiayu Wang</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20261013e"></script>
 </body>
 </html>

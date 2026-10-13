@@ -6,23 +6,25 @@
     <meta name="description" content="Jiayu Wang studies coastal wetlands, plant interactions, and ecological change at Xiamen University.">
     <title>Jiayu Wang | Coastal Plant Ecology</title>
     <link rel="stylesheet" href="styles.css?v=20261013c">
+    <link rel="stylesheet" href="site-theme.css?v=20261013e">
     <link rel="stylesheet" href="home.css?v=20261013d">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
-<body class="home-body">
-    <nav class="navbar">
+<body class="site-page home-body">
+    <nav class="navbar" aria-label="Primary navigation">
         <div class="nav-container">
             <a class="nav-logo" href="index.html"><span>Jiayu147</span><small>Coastal plant ecology</small></a>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="active">Home</a></li>
+            <ul class="nav-menu" id="site-menu">
+                <li><a href="index.html" class="active" aria-current="page">Home</a></li>
                 <li><a href="research.html">Research</a></li>
                 <li><a href="archive.html">Moment</a></li>
                 <li><a href="publications.html">Publications</a></li>
                 <li><a href="team.html">Collaborators</a></li>
                 <li><a href="personal-information.html">About</a></li>
             </ul>
-            <div class="hamburger" aria-label="Open navigation menu">
+            <button class="hamburger" type="button" aria-label="Open navigation menu" aria-controls="site-menu" aria-expanded="false">
                 <span></span><span></span><span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -68,6 +70,6 @@
             <p class="copyright">© 2026 Jiayu Wang</p>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="script.js?v=20261013e"></script>
 </body>
 </html>
