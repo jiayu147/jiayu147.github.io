@@ -1,0 +1,132 @@
+/* Publications: the same coastal-green palette and page width as Home. */
+.publications-body { --accent-color: #527c69; }
+.publications-page { min-height: 0; }
+.publication-hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    max-width: 1120px;
+    min-height: 370px;
+    margin: 48px auto 0;
+    padding: 56px 7%;
+    color: #fff;
+    background: #163d3a;
+}
+.publication-hero-photo {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    width: 66%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 57%;
+    filter: hue-rotate(58deg) saturate(.3) brightness(.78);
+}
+.publication-hero::after {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    content: '';
+    pointer-events: none;
+    background: linear-gradient(90deg, #163d3a 0%, #163d3a 31%, rgba(22, 61, 58, .87) 40%, rgba(22, 61, 58, .28) 52%, transparent 63%);
+}
+.publication-hero-copy { position: relative; z-index: 2; width: 42%; }
+.publication-hero h1 {
+    margin: 0 0 17px;
+    font-size: clamp(36px, 4vw, 48px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -.025em;
+}
+.publication-hero-copy p { color: #e4ebe4; font-size: 17px; line-height: 1.65; }
+.publications-list { padding-top: 38px; padding-bottom: 48px; }
+.publication-year + .publication-year { margin-top: 30px; }
+.publications-page .year-heading {
+    margin: 0 0 14px;
+    padding: 0;
+    border: 0;
+    color: var(--primary-color);
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: left;
+}
+.publications-page .publication-item {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+.publications-page .publication-item + .publication-item { margin-top: 20px; }
+.publications-page .publication-item h3 {
+    margin: 0 0 5px;
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+.publications-page .publication-item .authors {
+    margin: 0 0 3px;
+    color: #596c61;
+    font-size: 14px;
+    line-height: 1.55;
+}
+.publications-page .publication-item .journal {
+    margin: 0 0 3px;
+    color: var(--primary-color);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.55;
+}
+.publications-page .publication-item .doi {
+    color: var(--accent-color);
+    font-size: 13px;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+    text-underline-offset: 3px;
+}
+.publications-body a:focus-visible { outline: 2px solid #527c69; outline-offset: 4px; }
+@media (max-width: 1168px) {
+    .publication-hero { margin-right: 24px; margin-left: 24px; }
+}
+@media (max-width: 900px) {
+    .publication-hero { margin-top: 28px; }
+}
+@media (max-width: 768px) {
+    .publication-hero {
+        flex-direction: column;
+        align-items: stretch;
+        min-height: 0;
+        margin: 18px 14px 0;
+        padding: 0;
+    }
+    .publication-hero-copy { width: 100%; padding: 28px 24px 22px; }
+    .publication-hero h1 { font-size: 36px; margin-bottom: 12px; }
+    .publication-hero-copy p { font-size: 15px; }
+    .publication-hero-photo {
+        position: relative;
+        order: 1;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+    .publication-hero::after {
+        background: linear-gradient(180deg, #163d3a 0%, rgba(22, 61, 58, .9) 29%, transparent 54%);
+    }
+    .publications-list { padding-top: 28px; padding-bottom: 36px; }
+    .publication-year + .publication-year { margin-top: 26px; }
+    .publications-page .year-heading { margin-bottom: 12px; font-size: 24px; }
+    .publications-page .publication-item h3 { font-size: 18px; line-height: 1.45; }
+    .publications-page .publication-item .authors,
+    .publications-page .publication-item .journal { font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .publications-page .publication-item { opacity: 1 !important; transform: none !important; transition: none !important; }
+}

@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publications - Jiayu147 Ecology</title>
+    <title>Publications | Jiayu147</title>
+    <meta name="description" content="Publications by Jiayu Wang on coastal wetland ecology, plant interactions, and life-history strategies.">
     <link rel="stylesheet" href="styles.css?v=20261013c">
+    <link rel="stylesheet" href="publications.css?v=20261013a">
 </head>
-<body>
+<body class="publications-body">
     <nav class="navbar">
         <div class="nav-container">
             <a class="nav-logo" href="index.html"><span>Jiayu147</span><small>Coastal plant ecology</small></a>
@@ -18,7 +20,7 @@
                 <li><a href="team.html">Collaborators</a></li>
                 <li><a href="personal-information.html">About</a></li>
             </ul>
-            <div class="hamburger">
+            <div class="hamburger" aria-label="Open navigation menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -26,62 +28,67 @@
         </div>
     </nav>
 
-    <main class="main-content">
-        <section class="page-header">
-            <h1>Publications</h1>
-            <p class="tagline">"Not Produce Papers But Knowledge"</p>
-        </section>
-
-        <section class="content-section">
-            <div class="container">
-                <h2 class="year-heading">2025</h2>
-                
-                <div class="publication-item">
-                    <div class="authors">Wang JY, Chen XC, Wang YY, Chen YS, Wu H, Wittyngham SS, Kirwan ML, Zhang YH, Liu WW, Zhang YH</div>
-                    <h3>Life-history plasticity of intertidal salt marsh in response to sea level rise: Salinity and inundation modulate size-dependent flowering of <em>Spartina alterniflora</em></h3>
-                    <div class="journal"><em>Ecological Indicators</em>, 177, 113790</div>
-                    <a href="https://doi.org/10.1016/j.ecolind.2025.113790" class="doi" target="_blank">https://doi.org/10.1016/j.ecolind.2025.113790</a>
-                </div>
-
-                <h2 class="year-heading">2024</h2>
-                
-                <div class="publication-item">
-                    <div class="authors">Chen XC, Wang JY, Liu WW, Zhang YH</div>
-                    <h3>The relative effects of climatic drivers and phenotypic integration on phenotypic plasticity of a globally invasive plant</h3>
-                    <div class="journal"><em>Frontiers in Plant Science</em>, 15, 1473456</div>
-                    <a href="https://doi.org/10.3389/fpls.2024.1473456" class="doi" target="_blank">https://doi.org/10.3389/fpls.2024.1473456</a>
-                </div>
-
-                <div class="publication-item">
-                    <div class="authors">Chen XC, Wang JY, Liu WW, Zhang YH</div>
-                    <h3>Limited life-history plasticity in marginal population of an invasive foundation species: Unraveling the genetic underpinnings and ecological implications</h3>
-                    <div class="journal"><em>Ecology and Evolution</em>, 14(6), e11549</div>
-                    <a href="https://doi.org/10.1002/ece3.11549" class="doi" target="_blank">https://doi.org/10.1002/ece3.11549</a>
-                </div>
-
-                <h2 class="year-heading">2022</h2>
-                
-                <div class="publication-item">
-                    <div class="authors">Liu WW, Chen XC, Wang JY, Zhang YH</div>
-                    <h3>Does the effect of flowering time on biomass allocation across latitudes differ between invasive and native salt marsh grass <em>Spartina alterniflora</em>?</h3>
-                    <div class="journal"><em>Ecology and Evolution</em>, 12(3), e8681</div>
-                    <a href="https://doi.org/10.1002/ece3.8681" class="doi" target="_blank">https://doi.org/10.1002/ece3.8681</a>
-                </div>
-
-                <div class="publication-item">
-                    <div class="authors">Peng D, Zhang YH, Wang JY, Pennings SC</div>
-                    <h3>The opposite of biotic resistance: Herbivory and competition suppress regeneration of native but not introduced mangroves in southern China</h3>
-                    <div class="journal"><em>Forests</em>, 13(2)</div>
-                    <a href="https://doi.org/10.3390/f13020192" class="doi" target="_blank">https://doi.org/10.3390/f13020192</a>
-                </div>
+    <main class="main-content publications-page">
+        <section class="publication-hero" aria-labelledby="publications-heading">
+            <img class="publication-hero-photo" src="assets/publications-storytelling.jpg" alt="Storytelling" fetchpriority="high" width="2048" height="1347">
+            <div class="publication-hero-copy">
+                <h1 id="publications-heading">Publications</h1>
+                <p>"Not Produce Papers But Knowledge"</p>
             </div>
         </section>
+
+        <div class="publications-list content-wrap">
+            <section class="publication-year" aria-labelledby="year-2025">
+                <h2 class="year-heading" id="year-2025">2025</h2>
+                <article class="publication-item">
+                    <h3>Life-history plasticity of intertidal salt marsh in response to sea level rise: Salinity and inundation modulate size-dependent flowering of <em>Spartina alterniflora</em></h3>
+                    <div class="authors">Wang JY, Chen XC, Wang YY, Chen YS, Wu H, Wittyngham SS, Kirwan ML, Zhang YH, Liu WW, Zhang YH</div>
+                    <div class="journal"><em>Ecological Indicators</em>, 177, 113790</div>
+                    <a href="https://doi.org/10.1016/j.ecolind.2025.113790" class="doi" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/j.ecolind.2025.113790</a>
+                </article>
+            </section>
+
+            <section class="publication-year" aria-labelledby="year-2024">
+                <h2 class="year-heading" id="year-2024">2024</h2>
+                <article class="publication-item">
+                    <h3>The relative effects of climatic drivers and phenotypic integration on phenotypic plasticity of a globally invasive plant</h3>
+                    <div class="authors">Chen XC, Wang JY, Liu WW, Zhang YH</div>
+                    <div class="journal"><em>Frontiers in Plant Science</em>, 15, 1473456</div>
+                    <a href="https://doi.org/10.3389/fpls.2024.1473456" class="doi" target="_blank" rel="noopener noreferrer">https://doi.org/10.3389/fpls.2024.1473456</a>
+                </article>
+
+                <article class="publication-item">
+                    <h3>Limited life-history plasticity in marginal population of an invasive foundation species: Unraveling the genetic underpinnings and ecological implications</h3>
+                    <div class="authors">Chen XC, Wang JY, Liu WW, Zhang YH</div>
+                    <div class="journal"><em>Ecology and Evolution</em>, 14(6), e11549</div>
+                    <a href="https://doi.org/10.1002/ece3.11549" class="doi" target="_blank" rel="noopener noreferrer">https://doi.org/10.1002/ece3.11549</a>
+                </article>
+            </section>
+
+            <section class="publication-year" aria-labelledby="year-2022">
+                <h2 class="year-heading" id="year-2022">2022</h2>
+                <article class="publication-item">
+                    <h3>Does the effect of flowering time on biomass allocation across latitudes differ between invasive and native salt marsh grass <em>Spartina alterniflora</em>?</h3>
+                    <div class="authors">Liu WW, Chen XC, Wang JY, Zhang YH</div>
+                    <div class="journal"><em>Ecology and Evolution</em>, 12(3), e8681</div>
+                    <a href="https://doi.org/10.1002/ece3.8681" class="doi" target="_blank" rel="noopener noreferrer">https://doi.org/10.1002/ece3.8681</a>
+                </article>
+
+                <article class="publication-item">
+                    <h3>The opposite of biotic resistance: Herbivory and competition suppress regeneration of native but not introduced mangroves in southern China</h3>
+                    <div class="authors">Peng D, Zhang YH, Wang JY, Pennings SC</div>
+                    <div class="journal"><em>Forests</em>, 13(2)</div>
+                    <a href="https://doi.org/10.3390/f13020192" class="doi" target="_blank" rel="noopener noreferrer">https://doi.org/10.3390/f13020192</a>
+                </article>
+            </section>
+        </div>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Jiayu147 Ecology. College of the Environment and Ecology, Xiamen University</p>
-            <p>Contact: wangjy147@foxmail.com</p>
+    <footer class="footer home-footer">
+        <div class="content-wrap footer-inner">
+            <div><strong>Jiayu Wang</strong><p>College of the Environment and Ecology, Xiamen University</p></div>
+            <div class="footer-links"><a href="mailto:wangjy147@foxmail.com">Email</a><a href="personal-information.html">About</a></div>
+            <p class="copyright">© 2026 Jiayu Wang</p>
         </div>
     </footer>
 
