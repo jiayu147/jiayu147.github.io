@@ -1,5 +1,5 @@
 /* Styles used only by Home and its post archive. */
-.home-body { --accent-color: #527c69; }
+.home-body { --accent-color: #527c69; --home-copy-font-size: 17px; }
 .home-body .home-hero {
     background: #163d3a;
     box-shadow: inset 0 0 80px rgba(9, 32, 28, .2);
@@ -28,7 +28,11 @@
     text-shadow: 0 2px 16px rgba(8, 27, 22, .3);
 }
 .home-body .home-hero h1 span { display: block; white-space: nowrap; }
-.home-body .home-hero-copy { max-width: 465px; }
+.home-body .home-hero-copy { max-width: 465px; font-size: var(--home-copy-font-size); }
+.home-body .home-overview {
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 28px;
+}
 .home-body .home-overview .overview-copy h2,
 .home-body .focus-panel .eyebrow {
     margin-bottom: 0;
@@ -40,12 +44,18 @@
     line-height: 1.4;
 }
 .home-body .home-overview .overview-copy h2 {
-    max-width: 500px;
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 17px;
+    max-width: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: var(--home-copy-font-size);
     font-weight: 400;
     letter-spacing: 0;
-    line-height: 1.7;
+    line-height: 1.65;
+    white-space: nowrap;
+}
+.home-body .focus-panel { min-width: 0; }
+.home-body .focus-panel ul {
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 10px 18px;
 }
 .home-body .focus-panel .eyebrow { margin-bottom: 13px; }
 .latest-section { padding-top: 48px; padding-bottom: 60px; }
@@ -53,7 +63,13 @@
 .archive-page { min-height: calc(100vh - 255px); padding-top: 64px; padding-bottom: 64px; }
 .archive-page h1 { margin-bottom: 28px; color: var(--primary-color); font-size: clamp(36px, 5vw, 52px); font-weight: 400; }
 .archive-page .text-link { margin-top: 20px; }
+@media (max-width: 1100px) {
+    .home-body .home-overview { grid-template-columns: 1fr; }
+    .home-body .focus-panel { max-width: 560px; }
+}
 @media (max-width: 768px) {
+    .home-body { --home-copy-font-size: 15px; }
+    .home-body .home-overview .overview-copy h2 { white-space: normal; }
     .home-body .home-hero { padding: 42px 24px; }
     .home-body .home-hero h1 { font-size: clamp(17px, 5.05vw, 30px); }
     .home-body .home-hero-photo { object-position: 58% center; }
