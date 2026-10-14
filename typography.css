@@ -25,3 +25,12 @@
     .site-page .publications-page .publication-item .authors,
     .site-page .publications-page .publication-item .journal { font-size: 14px; }
 }
+
+/* Larger site identity and primary navigation on every page. */
+.site-page .nav-logo { font-size: 23px; }
+.site-page .nav-logo small { font-size: 14px; }
+.site-page .nav-menu a { font-size: 16px; }
+@media (min-width: 769px) and (max-width: 1000px) {
+ .site-page .nav-menu { gap: 10px; }
+ .site-page .nav-menu a { font-size: 15px; }
+}
