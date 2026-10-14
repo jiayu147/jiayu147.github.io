@@ -317,6 +317,8 @@ git push origin master
 
 ## 13. Moment：列表、详情、照片的完整更新流程
 
+首次操作建议先阅读第 19 节：包含可直接复制的 HTML 模板、照片插入位置和结束标签示例。
+
 ### 13.1 当前六条动态与详情文件
 
 | 日期 | 内容 | 详情文件 |
@@ -521,3 +523,102 @@ README 仅是维护指南，修改它不会改变网站正文。`script.js` 负�
 - [GitHub：编辑文件](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
 - [GitHub：上传文件](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository)
 - [GitHub Pages：配置发布来源](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+
+## 19. Moment HTML 模板：照着完成一次更新
+
+模板文件：[templates/moment-template.html](templates/moment-template.html)。它包含完整导航、标题、日期、分类、简讯、横线、详细正文、双图图库、返回链接和页脚。示例使用仓库现有照片方便预览，发布前应替换成当前活动照片，或删除示例图库。
+
+### A. 新增动态：复制模板
+
+1. 在 GitHub 打开模板文件，点击 Raw，复制全部 HTML 内容。
+2. 返回仓库根目录，确认分支为 master，选择 **Add file → Create new file**。
+3. 文件名填写 `moment-my-new-event.html`，粘贴模板。
+4. **删除 `<base href="../">`**：它仅用于让 templates 文件夹内的模板正确预览。根目录的正式详情页不能保留它。
+5. 删除 `<meta name="robots" content="noindex">`：这行只用于让搜索引擎忽略模板。
+6. 搜索 `REPLACE`，替换标题、页面 title、description、简讯、详细文字、图片说明及图题。
+7. 两处日期（datetime 和显示日期）改成真实日期；分类改为 Field Work 或 Academic Exchange。
+8. canonical 地址改为 `https://jiayu147.github.io/moment-my-new-event.html`。
+9. 两处 Back to Moments 的 href 改为 `archive.html#my-new-event`，编号与列表 article id 一致。
+10. 保存提交到 master。之后按 C 步骤将动态加入列表。
+
+### B. 添加或更新详细文字、照片
+
+已有动态无需重新复制完整模板：按第 13.1 节找到对应详情文件，点击铅笔修改。
+
+**添加文字：**搜索 `class="moment-body"`。每段文字写在 `<p>...</p>` 中；把 `<p>to be updated</p>` 替换为完整介绍。学名用 `<em>...</em>`。简讯位于上方 moment-summary 内，横线是 `<hr class="moment-divider">`，它们与详细正文独立。
+
+**上传照片：**进入 assets 文件夹 → Add file → Upload files → 上传并提交。建议用英文文件名。照片属性中的像素宽高填入 width/height；网页显示大小由 CSS 控制，不要用这两个属性缩小图片。
+
+**两张照片并列：**在最后一段正文之后、结束 moment-body 的 `</div>` 之前，插入下面这组代码：
+
+```html
+<div class="moment-body">
+    <p>详细介绍第一段。</p>
+    <p>详细介绍第二段。</p>
+
+    <div class="moment-gallery">
+        <figure>
+            <img src="assets/my-photo-1.jpg"
+                 alt="第一张照片的内容"
+                 loading="lazy" width="1706" height="1279">
+            <figcaption>第一张照片的图题。</figcaption>
+        </figure>
+        <figure>
+            <img src="assets/my-photo-2.jpg"
+                 alt="第二张照片的内容"
+                 loading="lazy" width="2048" height="1536">
+            <figcaption>第二张照片的图题。</figcaption>
+        </figure>
+    </div><!-- 结束图库 -->
+</div><!-- 结束正文，图片必须在此标签之前 -->
+```
+
+这是一整块正文结构示例；已有 moment-body 时只插入内部图库，不要再嵌套一套 moment-body。替换路径、alt、图题及真实原图尺寸。两个 figure 的顺序决定左右顺序。
+
+默认两图居中并列，整组最大宽度 800px，手机自动缩小，图题自动换行。若只想缩小这一组，将图库开头改为 `<div class="moment-gallery" style="max-width: 600px;">`。单张照片只用一个 figure，直接放在 moment-body 内，不用双列容器；如需缩小并居中，在 figure 上加 `style="max-width: 600px; margin: 32px auto;"`。更多照片可以按两张一组增加图库，最后单张使用单独 figure。
+
+没有照片时删除整个 moment-gallery（包括其结束 div），保留结束 moment-body 的 div。图题修改 figcaption，正文修改 p，图片路径修改 src，这三者不要混淆。
+
+### C. 将新动态添加到 Moment 与首页
+
+详情页创建完成后，打开 archive.html，在 news-list 内添加新条目：
+
+```html
+<article class="news-item" id="my-new-event" aria-labelledby="my-new-event-title">
+    <div class="news-meta">
+        <time datetime="2026-11-01">2026-11-01</time>
+        <span>Field Work</span>
+    </div>
+    <div class="news-copy">
+        <h3 id="my-new-event-title">
+            <a href="moment-my-new-event.html">新动态标题</a>
+        </h3>
+        <p>这里与详情页 moment-summary 中的简讯一致。</p>
+    </div>
+</article>
+```
+
+日期、分类、标题和简讯与详情页保持一致；id 必须唯一。按日期从新到旧排列。首页在线列表会自动取最新三条，无需另外写同步脚本；同时更新 index.html 的备用三条，将 id 与 aria-labelledby 改为对应的 home- 前缀版本。
+
+在 sitemap.xml 的结束 urlset 前加入正式详情地址。模板本身不用加入 sitemap 或导航。
+
+### D. 更正已有简讯：三处同步
+
+1. archive.html 中这条 news-copy 的 p。
+2. 对应详情页 moment-summary 的 p，并按需同步 description。
+3. 属于首页最新三条时，index.html 中对应的备用 p。
+
+完整详细正文只在详情页修改，不复制到首页或列表。标题或日期有更正时，同步列表、详情标题/日期以及首页备用条目。
+
+### E. 提交后检查与问题排查
+
+- 确认 moment.css 已在 head 中引用。当前样式版本是 `moment.css?v=20261014d`；添加正文照片一般不需要修改版本号。
+- 两张图未并列：检查是否在同一个 moment-gallery 内、CSS 是否加载。
+- 图片撑出页面：检查使用当前 moment.css；图片应在 moment-body 内，图库样式也已独立限制图片宽度。
+- 图片不显示：检查 assets 文件存在、文件名和大小写准确。
+- 返回链接找不到条目：检查 archive 的 article id 与 Back to Moments 的 #编号一致。
+- 新页面所有链接都不对：检查是否忘删模板中的 base 标签。
+- 图片尺寸元数据不要套用旧图：Go Belowground 合照实际为 3302×2475，课堂照片为 1707×1280；10-02 两图分别为 1706×1279、2048×1536。
+- Commit 后等待 Actions 的 Pages 部署成功，再打开电脑和手机页面检查。若仍显示旧版本，强制刷新。
+
+模板有多处英文注释标明可替换内容及结束标签位置，注释不会显示给访客。以后全站导航或页脚有修改，也应同步模板，避免新页面带入旧信息。
