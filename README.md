@@ -108,7 +108,7 @@
 
 ### 首页如何自动显示最新三条
 
-`script.js` 在首页加载时读取 `archive.html`，按每条动态的 `datetime` 从新到旧排序，选取前三条，并为标题添加指向 Moment 对应条目的链接。
+`script.js` 在首页加载时读取 `archive.html`，按每条动态的 `datetime` 从新到旧排序，选取前三条，并保留标题指向独立详情页的链接。
 
 **正常情况下，新增动态只需修改 `archive.html`，首页会自动同步最新三条。**
 
@@ -297,3 +297,25 @@ git push origin master
 - [GitHub：编辑文件](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
 - [GitHub：上传文件](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository)
 - [GitHub Pages：配置发布来源](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+
+## Moment 详情页：正文与照片
+
+每条简讯的标题现在链接到独立的 `moment-条目id.html`，首页自动沿用该链接。简讯在 `archive.html` 编辑，完整介绍在对应详情页编辑；修改标题或摘要时请同步相关详情页。
+
+新增一条动态时：
+
+1. 在 `archive.html` 添加简讯，标题写为 `<h3><a href="moment-new-story.html">标题</a></h3>`，保留唯一条目 id 和日期。
+2. 复制已有 `moment-*.html` 为 `moment-new-story.html`，修改标题、日期、分类、description、canonical 地址，以及返回链接中的条目 id。
+3. 在 `<div class="moment-body">` 中增加正文段落，每段用 `<p>...</p>`。拉丁学名使用 `<em>...</em>`。
+4. 将照片上传到 `assets/`，在正文中增加下面的图片块。替换文件名、图片描述、实际尺寸和说明；可以添加多个图片块。图片按原比例显示，手机宽度自动适配。
+5. 将详情页地址添加到 `sitemap.xml`。首页会自动同步最新三条及其详情链接，建议同时更新 `index.html` 的备用条目。
+
+```html
+<figure>
+    <img src="assets/new-story-photo.jpg" alt="照片中展示的内容"
+         loading="lazy" width="1200" height="800">
+    <figcaption>照片说明。</figcaption>
+</figure>
+```
+
+详情页的排版由 `moment.css` 控制。当前详情页沿用已有简讯正文，等待补充各活动的完整文字和对应照片；HTML 注释内提供了图片模板，不会在页面显示。

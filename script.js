@@ -20,8 +20,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 heading.id = entry.id + '-title';
                 entry.setAttribute('aria-labelledby', heading.id);
                 const link = document.createElement('a');
-                link.setAttribute('href', 'archive.html#' + encodeURIComponent(post.id));
-                link.append(...Array.from(heading.childNodes));
+                const sourceLink = post.querySelector('h3 a');
+                link.setAttribute('href', sourceLink?.getAttribute('href') || 'archive.html#' + encodeURIComponent(post.id));
+                link.innerHTML = sourceLink ? sourceLink.innerHTML : heading.innerHTML;
                 heading.replaceChildren(link);
                 return entry;
             });
@@ -69,7 +70,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-menu a').forEach(function (link) {
-        const active = link.getAttribute('href').split('/').pop() === currentPage;
+        const target = link.getAttribute('href').split('/').pop();
+        const active = target === currentPage || (currentPage.startsWith('moment-') && target === 'archive.html');
         link.classList.toggle('active', active);
         if (active) link.setAttribute('aria-current', 'page');
         else link.removeAttribute('aria-current');
