@@ -1,251 +1,299 @@
-# Jiayu147 Ecology - Academic Personal Website
+# Jiayu147｜学术个人网站维护指南
 
-这是一个基于 GitHub Pages 的学术个人网站模板，从 Weebly 平台迁移而来。
+- 网站：https://jiayu147.github.io/
+- 仓库：https://github.com/jiayu147/jiayu147.github.io
+- 日常更新分支：`master`
 
-## 网站结构
+本指南对应当前网站的实际文件结构。日常维护可以直接在 GitHub 网页上完成。
 
+## 1. 网站如何工作
+
+这是一个静态多页面网站，各板块是独立页面。
+
+| 类型 | 作用 |
+| --- | --- |
+| HTML | 保存标题、正文、论文、动态、图片路径等内容 |
+| CSS | 控制深绿配色、字号、布局、图片裁剪与手机排版 |
+| JavaScript | 控制手机菜单、导航高亮和首页动态同步 |
+| GitHub Pages | 构建并发布仓库中的网页文件 |
+
+日常流程：修改文件 → Commit changes 提交 → 等待 Pages 部署成功 → 刷新网站检查。
+
+## 2. 要改什么，就打开哪个文件
+
+| 板块 | 文件 | 常见更新 |
+| --- | --- | --- |
+| Home | `index.html` | 首页标题、简介、Research focus、首页备用动态 |
+| Research | `research.html` | 研究方向、说明文字、图片 |
+| Moment | `archive.html` | 全部动态、Moments 简介、背景照片 |
+| Publications | `publications.html` | 年份、论文标题、作者、期刊和 DOI |
+| Collaborators | `team.html` | 合作者姓名、简介、头像、邮箱 |
+| About | `personal-information.html` | 个人照片、经历、基金、联系方式和地址 |
+| 图片 | `assets/` | 所有页面使用的照片与图片 |
+
+**文件名与菜单名称不完全相同：Moment 使用 `archive.html`，Collaborators 使用 `team.html`。**
+
+`species.html` 和 `life.html` 是保留的旧页面，目前不在主导航中。日常维护以以上六个页面为准。
+
+### 样式与交互文件
+
+| 文件 | 负责的部分 |
+| --- | --- |
+| `styles.css` | 基础样式、导航、页脚和早期样式 |
+| `site-theme.css` | 全站深绿主题、统一页面宽度、次级页面横幅与响应式布局 |
+| `typography.css` | 全站正文字号，通常最后加载 |
+| `home.css` | 首页横幅、简介、Research focus 等专用布局 |
+| `research.css` | Research 标题与左图右文排版 |
+| `publications.css` | Publications 横幅和论文列表 |
+| `collaborators.css` | 合作者介绍及竖向头像排版 |
+| `about.css` | About 背景、个人照片和图注 |
+| `news.css` | Home 和 Moment 的动态列表 |
+| `script.js` | 首页动态同步、手机菜单、当前导航高亮 |
+
+`app.js` 目前未被页面引用。`publications.bib` 不会自动生成网页中的论文列表；更新论文请编辑 `publications.html`。
+
+## 3. 直接在 GitHub 网页上更新
+
+### 修改已有文字
+
+1. 打开仓库，确认当前分支是 `master`。
+2. 点击需要修改的文件，例如 `archive.html`。
+3. 点击右上方铅笔按钮，进入编辑。
+4. 找到原句，只替换需要修改的文字。
+5. 点击 **Commit changes…**，填写说明，例如 `Update fieldwork news`。
+6. 日常直接发布可选择提交到当前 `master` 分支，再确认提交。
+7. 进入 **Actions**，查看最新的 **pages build and deployment**。
+8. 部署成功后，打开网站检查；必要时强制刷新浏览器。
+
+保存编辑器中的内容不等于网站已经更新，必须完成提交并等待部署。
+
+### 上传修改好的文件
+
+1. 在仓库根目录选择 **Add file → Upload files**。
+2. 上传需要覆盖的 HTML、CSS、JavaScript 或 README 文件。
+3. 文件名保持与原文件一致。
+4. 填写提交说明并提交到 `master`。
+5. 如果修改的是网页文件，等待 Actions 部署后检查网站。
+
+图片应上传到 `assets/` 文件夹，见第 7 节。已有 GitHub Pages 配置通常无需重新设置；出现发布问题时，到 **Settings → Pages** 查看当前发布来源。
+
+## 4. 新增 Moment：最常用的操作
+
+打开 `archive.html`，找到 `<div class="news-list">`。复制其中一个完整的 `<article>`，修改后放在列表最前面。
+
+```html
+<article class="news-item" id="new-fieldwork"
+         aria-labelledby="new-fieldwork-title">
+    <div class="news-meta">
+        <time datetime="2026-10-14">2026-10-14</time>
+        <span>Field Work</span>
+    </div>
+    <div class="news-copy">
+        <h3 id="new-fieldwork-title">Your new title</h3>
+        <p>Your description about <em>Acanthus ilicifolius</em>.</p>
+    </div>
+</article>
 ```
-.
-├── index.html              # 首页
-├── personal-information.html  # 个人信息页面
-├── research.html           # 研究内容页面
-├── publications.html       # 发表论文页面
-├── species.html           # 物种信息页面
-├── life.html             # 生活内容页面
-├── team.html             # 团队介绍页面
-├── styles.css            # 样式文件
-├── script.js             # JavaScript 交互文件
-└── README.md             # 本文件
+
+每次需要修改：
+
+- 日期：`datetime` 中的日期和显示日期都改成同一天，格式为 `YYYY-MM-DD`。
+- 分类：例如 `Field Work` 或 `Academic Exchange`。
+- 标题：`<h3>` 中的文字。
+- 正文：`<p>` 中的文字。
+- 编号：把 `new-fieldwork` 换成独一无二的英文编号。
+- 对应关系：`aria-labelledby` 必须与标题的 `id` 完全相同。
+
+把新动态放在列表最前面，Moment 页面按 HTML 中的顺序显示。更正旧动态时，直接修改对应条目的文字即可。
+
+### 首页如何自动显示最新三条
+
+`script.js` 在首页加载时读取 `archive.html`，按每条动态的 `datetime` 从新到旧排序，选取前三条，并为标题添加指向 Moment 对应条目的链接。
+
+**正常情况下，新增动态只需修改 `archive.html`，首页会自动同步最新三条。**
+
+`index.html` 还包含三条备用动态；如果浏览器不能读取 Moment，或禁用了 JavaScript，会显示这三条备用内容。维护首页时可以顺便更新它们。
+
+日期、文章 `id`、标题 `<h3>` 和现有的 `news-list` / `news-item` 类名应保留正确格式，以便自动同步。
+
+## 5. 新增论文
+
+打开 `publications.html`，在对应年份的 `<section class="publication-year">` 内复制一个完整的论文条目：
+
+```html
+<article class="publication-item">
+    <h3>Your paper title about <em>Spartina alterniflora</em></h3>
+    <div class="authors">Author A, Author B, Author C</div>
+    <div class="journal"><em>Journal name</em>, volume, pages or article number</div>
+    <a href="https://doi.org/YOUR-DOI" class="doi"
+       target="_blank" rel="noopener noreferrer">https://doi.org/YOUR-DOI</a>
+</article>
 ```
 
-## 功能特点
+- 修改论文标题、作者顺序、期刊、卷页或文章号。
+- DOI 的 `href` 和显示文字都要更新。
+- 新年份需要复制一整段 `publication-year`，同时修改年份标题、`id` 和 `aria-labelledby`。
+- 年份从新到旧排列，当前顺序为标题、作者、期刊、DOI。
 
-- ✅ 完全响应式设计，支持手机、平板、电脑访问
-- ✅ 现代化学术网站设计风格
-- ✅ 包含7个主要页面（与原有 Weebly 网站对应）
-- ✅ 已包含真实的发表论文数据
-- ✅ 移动端友好的汉堡菜单
-- ✅ 平滑滚动和动画效果
-- ✅ 易于定制和扩展
+## 6. 更新 Research、Collaborators 和 About
 
-## 如何部署到 GitHub Pages
+### Research
 
-### 步骤 1: 创建 GitHub 账户
+编辑 `research.html`。每个研究方向是一个完整的 `research-topic` 区块：标题在上，下方左图右文。复制或移动时，按整个 `<section>` 区块操作。
 
-如果还没有 GitHub 账户，请先注册：https://github.com/signup
+新增区块要设置唯一的标题 `id`，并同步对应的 `aria-labelledby`。说明文字位于 `research-copy` 内，图片路径位于 `<img src="...">`。
 
-### 步骤 2: 创建新的仓库
+### Collaborators
 
-1. 登录 GitHub
-2. 点击右上角的 "+" 号，选择 "New repository"
-3. 仓库名称填写：`[你的用户名].github.io`
-   - 例如：如果用户名是 `jiayu147`，则填写 `jiayu147.github.io`
-   - **重要**：这会让你的网站直接通过 `https://[用户名].github.io` 访问
-4. 选择 "Public"（公开）
-5. 勾选 "Add a README file"（可选）
-6. 点击 "Create repository"
+编辑 `team.html`。每位合作者是一个 `collaborator-section`。新增时可复制：
 
-### 步骤 3: 上传文件
-
-#### 方法一：通过 GitHub 网页上传（推荐新手）
-
-1. 进入你刚创建的仓库
-2. 点击 "Add file" → "Upload files"
-3. 将以下文件拖拽到网页中：
-   - `index.html`
-   - `personal-information.html`
-   - `research.html`
-   - `publications.html`
-   - `species.html`
-   - `life.html`
-   - `team.html`
-   - `styles.css`
-   - `script.js`
-4. 在 "Commit changes" 下方填写提交信息，例如 "Initial website upload"
-5. 点击 "Commit changes"
-
-#### 方法二：使用 Git 命令行（推荐熟悉 Git 的用户）
-
-```bash
-# 克隆仓库到本地
-git clone https://github.com/[你的用户名]/[你的用户名].github.io.git
-
-# 进入仓库目录
-cd [你的用户名].github.io
-
-# 复制所有网站文件到这个目录
-
-# 添加文件到 Git
-git add .
-
-# 提交更改
-git commit -m "Initial website upload"
-
-# 推送到 GitHub
-git push origin main
+```html
+<section class="content-section collaborator-section"
+         aria-labelledby="new-person-heading">
+    <div class="container collaborator-layout">
+        <h2 id="new-person-heading">Name 中文姓名, Position (pronouns)</h2>
+        <figure class="collaborator-figure">
+            <img class="collaborator-portrait"
+                 src="assets/new-person.jpg" alt="Name 中文姓名"
+                 width="600" height="800" loading="lazy" decoding="async">
+        </figure>
+        <div class="collaborator-copy">
+            <p>Research interests and collaboration description.</p>
+            <p class="collaborator-contact">Contact:
+                <a href="mailto:person@example.com">person@example.com</a>
+            </p>
+        </div>
+    </div>
+</section>
 ```
 
-### 步骤 4: 启用 GitHub Pages
+修改姓名、职位、介绍、邮箱、图片路径和唯一编号。`width` / `height` 填图片本身的像素尺寸；网页显示尺寸由 CSS 控制。当前头像为最大宽度 120 像素、竖向 3:4 比例，电脑端通常显示为 120 × 160。
 
-1. 进入你的 GitHub 仓库
-2. 点击 "Settings"（设置）
-3. 在左侧菜单找到 "Pages"
-4. 在 "Build and deployment" → "Branch" 中选择：
-   - Branch: `main` (或 `master`)
-   - Folder: `/ (root)`
-5. 点击 "Save"
-6. 等待几分钟，GitHub 会显示你的网站地址：`https://[用户名].github.io`
+### About
 
-### 步骤 5: 访问你的网站
+编辑 `personal-information.html`。个人经历、基金、Contact、Address 分别位于独立的内容区块中。邮箱链接修改时，`mailto:` 后的地址和显示地址一起更新。
 
-在浏览器中输入：`https://[你的用户名].github.io`
+## 7. 上传、更换与裁剪图片
 
-**注意**：GitHub Pages 的部署可能需要 1-5 分钟，请耐心等待。
+### 上传和引用
 
-## 如何自定义网站内容
+1. 打开仓库的 `assets/` 文件夹。
+2. 选择 **Add file → Upload files**，上传照片并提交。
+3. 编辑相应 HTML，将图片路径改为新文件名：
 
-### 1. 修改个人信息
+```html
+<img src="assets/new-photo.jpg" alt="图片说明">
+```
 
-编辑 `personal-information.html` 文件：
-- 替换 `[Your Name]` 为你的真实姓名
-- 替换 `[your.email@xmu.edu.cn]` 为你的邮箱
-- 替换办公室地址等信息
-- 上传你的照片，替换占位符图片
+文件名、扩展名和大小写必须与上传文件完全一致。可使用 `fieldwork-2026-10.jpg` 这样的英文文件名。图片先上传成功，再更新网页引用。
 
-### 2. 添加真实照片
+### 当前裁剪方式
 
-1. 准备你的照片，命名为 `profile.jpg` 或其他格式
-2. 上传到仓库（通过网页或 Git）
-3. 在 `personal-information.html` 中修改图片路径：
-   ```html
-   <img src="profile.jpg" alt="Profile Photo">
-   ```
+- Research 图片：统一 4:3 区域，最大宽度 320 像素；竞争示意图完整显示。
+- Collaborators 头像：统一竖向 3:4，最大宽度 120 像素。
+- About 个人照片：按原始比例显示，单独一行。
+- 页面背景：照片叠加深绿渐变，以保持文字清楚。
 
-### 3. 更新研究内容
-
-编辑 `research.html` 文件：
-- 替换 `[Funding Agency/Project Number]` 为真实的资助信息
-- 替换 `[Start Year] - [End Year]` 为真实的时间
-- 添加你的实际研究项目和描述
-
-### 4. 添加更多发表论文
-
-编辑 `publications.html` 文件：
-- 在相应的年份标题下添加新的论文条目
-- 复制现有的 `publication-item` div 并修改内容
-- 确保 DOI 链接正确
-
-### 5. 修改物种信息
-
-编辑 `species.html` 文件：
-- 替换占位符图片为真实的物种照片
-- 修改物种描述为你实际研究的内容
-- 添加或删除物种卡片
-
-### 6. 更新团队信息
-
-编辑 `team.html` 文件：
-- 添加真实的团队成员信息和照片
-- 更新校友信息
-- 修改合作者列表
-
-### 7. 自定义颜色主题
-
-编辑 `styles.css` 文件，修改以下 CSS 变量：
+例如合作者头像的 CSS：
 
 ```css
-:root {
-    --primary-color: #2c5f2d;      /* 主色调（深绿色）*/
-    --secondary-color: #97bc62;    /* 副色调（浅绿色）*/
-    --accent-color: #4a90e2;      /* 强调色（蓝色）*/
-    --text-color: #333;            /* 文字颜色 */
-    --light-bg: #f5f5f5;         /* 浅色背景 */
-    --white: #ffffff;              /* 白色 */
+.collaborator-figure { max-width: 120px; }
+.collaborator-portrait {
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: center 20%;
 }
 ```
 
-## 如何更新网站
+`max-width` 控制最大宽度，`aspect-ratio` 控制显示比例，`object-fit: cover` 填满区域并裁剪边缘，`object-position` 调整裁剪位置。调整显示裁剪不改变原始图片文件。
 
-### 通过 GitHub 网页：
+## 8. 调整字号、配色和手机排版
 
-1. 进入你的仓库
-2. 点击要修改的文件
-3. 点击右上角的铅笔图标（Edit this file）
-4. 进行修改
-5. 滚动到底部，填写提交信息
-6. 点击 "Commit changes"
+- 正文字号：优先修改 `typography.css`。当前主要正文为 16 像素，桌面横幅简介为 18 像素，手机横幅简介为 16 像素。
+- 全站主题：优先查看 `site-theme.css` 的 `.site-page` 变量。主色为 `#254b40`，强调色为 `#527c69`。
+- 专用布局：修改对应页面的 CSS，例如头像尺寸在 `collaborators.css`。
+- 手机布局：主要在 `@media (max-width: 768px)` 中设置；Research 和 Collaborators 转为上下排列，导航改为可展开菜单。
 
-### 通过 Git 命令行：
+CSS 按 HTML 引用顺序加载，后加载且匹配优先级合适的规则会覆盖之前的规则。全站字号文件 `typography.css` 通常位于其他样式文件之后。
 
-```bash
-# 拉取最新更改
-git pull
+修改 CSS 或 JavaScript 后，可以更新对应 HTML 引用中的版本号，让浏览器重新获取文件：
 
-# 修改文件后
-git add .
-git commit -m "描述你的更改"
-git push origin main
+```html
+<link rel="stylesheet" href="news.css?v=20261014a">
+<script src="script.js?v=20261014a"></script>
 ```
 
-## 自定义域名（可选）
+如果共享文件被多个页面引用，需要在相应页面同步更新版本号。版本号是浏览器缓存标记，不是另一份文件名。
 
-如果你想使用自己的域名（例如 `www.yourname.com`）：
+## 9. 常用 HTML 写法
 
-1. 购买域名（从域名注册商如阿里云、腾讯云等）
-2. 在域名注册商处添加 CNAME 记录，指向 `[用户名].github.io`
-3. 在 GitHub 仓库中创建 `CNAME` 文件，内容为你的域名
-4. 在 GitHub 仓库 Settings → Pages → Custom domain 中填写你的域名
+| 内容 | 写法 |
+| --- | --- |
+| 段落 | `<p>Your text.</p>` |
+| 斜体学名 | `<em>Acanthus ilicifolius</em>` |
+| 加粗 | `<strong>Your text</strong>` |
+| 二级标题 | `<h2>Your heading</h2>` |
+| 网页链接 | `<a href="https://example.com">Link text</a>` |
+| 邮箱链接 | `<a href="mailto:name@example.com">name@example.com</a>` |
+| 正文中的 & 符号 | `&amp;` |
 
-## 故障排除
+HTML 文件不是 Markdown：写 `*Acanthus*` 不会自动变成斜体，应使用 `<em>Acanthus</em>`。保留原有标签、结束标签与类名，只改需要修改的内容。
 
-### 网站无法访问
+## 10. 导航、页脚与辅助文件
 
-- 确认仓库名称正确：`[用户名].github.io`
-- 确认 GitHub Pages 已启用（Settings → Pages）
-- 等待 5-10 分钟让 GitHub 部署
+导航和页脚分别写在每个 HTML 页面里。修改全站菜单或页脚信息时，要同步修改六个主要页面。
 
-### 样式无法加载
+新增页面时，可复制现有页面保留公共结构，再修改页面标题、正文、当前导航项和专用样式引用。若要把新页面加入导航，也要同步更新其他页面的导航。
 
-- 确认 `styles.css` 文件已上传
-- 检查 HTML 文件中的 CSS 链接路径：`<link rel="stylesheet" href="styles.css">`
-- 确保文件名大小写正确（GitHub 区分大小写）
+`README.md` 是 GitHub 仓库的维护说明，修改它不会直接改变网页正文。`sitemap.xml`、`robots.txt` 属于辅助文件；新增公开页面时可同步维护站点地图。
 
-### 图片无法显示
+## 11. 更新后的检查与常见问题
 
-- 确认图片已上传到仓库
-- 检查图片路径是否正确
-- 使用相对路径，例如 `src="profile.jpg"` 而不是完整 URL
+每次更新后检查：日期和文字是否正确、图片是否加载、学名是否斜体、邮箱和 DOI 是否可点击，以及电脑和手机上的换行情况。
 
-## 技术栈
+| 情况 | 检查方法 |
+| --- | --- |
+| 网页还显示旧内容 | 确认已经 Commit 到 `master`，查看 Actions 最新部署状态，再刷新页面 |
+| 图片不显示 | 检查图片是否上传、`assets/` 路径、文件名及大小写 |
+| 样式没有变化 | 检查 CSS 引用与覆盖关系，更新 `?v=...` 后刷新 |
+| 首页动态没有同步 | 检查 Moment 条目的日期格式、唯一 `id`、`h3` 和类名，并确认 `script.js` 已加载 |
+| 改了 `.bib` 但论文不变 | 当前论文列表直接来自 `publications.html` |
+| 导航或页脚只改了一页 | 同步修改其他 HTML 页面里的同一部分 |
+| 部署失败 | 打开 Actions 的失败任务，查看具体错误；在 Settings → Pages 核对发布来源 |
 
-- HTML5
-- CSS3（Flexbox、Grid、CSS Variables）
-- Vanilla JavaScript（无框架依赖）
-- 完全静态，无需服务器端处理
+### 需要本地预览时
 
-## 浏览器兼容性
+下载完整仓库，在仓库根目录运行：
 
-- Chrome（推荐）
-- Firefox
-- Safari
-- Edge
-- 移动端浏览器
+```bash
+python -m http.server 8000
+```
 
-## 许可
+然后打开 `http://localhost:8000/`。本地 HTTP 预览可以运行首页读取 Moment 的功能；直接双击 HTML 文件的 `file://` 预览可能无法读取其他页面。
 
-MIT License - 可自由使用、修改和分发
+### 使用 Git 更新（可选）
 
-## 贡献
+首次使用可克隆仓库：
 
-如果你发现 bug 或有改进建议，欢迎提交 Issue 或 Pull Request。
+```bash
+git clone https://github.com/jiayu147/jiayu147.github.io.git
+cd jiayu147.github.io
+```
 
-## 联系方式
+日常修改前拉取最新内容，修改后明确添加需要提交的文件：
 
-如有问题，可以：
-- 查看 GitHub Pages 官方文档：https://pages.github.com/
-- 在仓库中提交 Issue
-- 联系我：[你的邮箱]
+```bash
+git pull --ff-only origin master
+# 编辑需要修改的文件
+git add archive.html
+git commit -m "Add a new Moment"
+git push origin master
+```
 
----
+如修改多个文件，把它们一起列在 `git add` 后。推送需要已配置的 GitHub 登录认证。之后仍需等待 Pages 部署，并检查线上结果。
 
-**祝你的学术网站建设顺利！🎓🌿**
+## 官方参考
+
+- [GitHub：编辑文件](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
+- [GitHub：上传文件](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository)
+- [GitHub Pages：配置发布来源](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
