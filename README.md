@@ -36,7 +36,7 @@ Home 内容使用 home.html。网站根地址默认读取 index.html，由它跳
 
 ### 本次文件名整理
 
-archive.html 改为 moment.html，team.html 改为 collaborators.html，personal-information.html 改为 about.html，news.css 改为 moment-list.css。旧的三个页面和 news.css 已删除；旧地址不再可访问。
+archive.html 改为 moment.html，team.html 改为 collaborators.html，personal-information.html 改为 about.html，news.css 改为 moment-list.css。三个旧页面文件保留为自动跳转入口：archive.html → moment.html、team.html → collaborators.html、personal-information.html → about.html。访问旧链接会自动进入新页面，并保留 #文章编号；无需在旧文件维护正文。news.css 已更名为 moment-list.css。
 
 主页内容从 index.html 移到 home.html。index.html 仅作为网站根地址的入口跳转到 home.html，今后只编辑 home.html。全部导航、详情返回链接、首页动态脚本、模板与站点地图均使用新文件名。
 
