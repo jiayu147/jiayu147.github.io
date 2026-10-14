@@ -4,19 +4,19 @@
 
 本指南按网页顶部导航的顺序组织。HTML 保存内容，CSS 控制排版，script.js 控制手机菜单和首页动态同步；提交后由 GitHub Pages 发布。
 
-## 1. 网页与仓库文件一一对应
+## 1. 网页与仓库文件对应表
 
 | 网页导航 | 内容文件 | 专用样式 | 要修改的内容 |
 | --- | --- | --- | --- |
-| Home | `home.html` | `home.css` | 两行大标题、简介、Research focus、首页备用三条动态 |
+| Home | `index.html` | `home.css` | 两行大标题、简介、Research focus、首页备用三条动态 |
 | Research | `research.html` | `research.css` | 三个研究方向的标题、照片和说明 |
-| Moment | `moment.html` | `moment-list.css` | 简讯列表、日期、分类、标题链接、简讯文字 |
+| Moment | `archive.html` | `news.css` | 简讯列表、日期、分类、标题链接、简讯文字 |
 | Moment → 某条标题 | `moment-文章编号.html` | `moment.css` | 该文章的简讯、详细正文、照片和图题 |
 | Publications | `publications.html` | `publications.css` | 年份、论文标题、作者、期刊、DOI |
-| Collaborators | `collaborators.html` | `collaborators.css` | 合作者姓名、职位、头像、介绍、联系方式 |
-| About（页内标题 Personal information） | `about.html` | `about.css` | 个人照片、经历、基金、Contact、Address |
+| Collaborators | `team.html` | `collaborators.css` | 合作者姓名、职位、头像、介绍、联系方式 |
+| About（页内标题 Personal information） | `personal-information.html` | `about.css` | 个人照片、经历、基金、Contact、Address |
 
-Home 内容使用 home.html。网站根地址默认读取 index.html，由它跳转到 home.html；以后只编辑 home.html。其他主页面直接使用导航名称命名。Moment 详情统一使用 `moment-` 前缀，图片都在 assets 文件夹。
+主页仍使用 index.html，Moment 列表使用 archive.html，Collaborators 使用 team.html，About 使用 personal-information.html。这些是当前正式内容文件，菜单名称不必与文件名相同。动态详情保留 moment- 前缀。
 
 ### 公共文件
 
@@ -25,20 +25,17 @@ Home 内容使用 home.html。网站根地址默认读取 index.html，由它跳
 | `styles.css` | 基础样式、导航与页脚 |
 | `site-theme.css` | 深绿主题、统一宽度、次级页面背景横幅与手机叠加效果 |
 | `typography.css` | 全站字号及顶部站点名称、导航字号 |
-| `script.js` | 首页读取 moment.html 的最新三条、手机菜单、导航高亮 |
+| `script.js` | 首页读取 archive.html 的最新三条、手机菜单、导航高亮 |
 | `assets/` | 图片；现有命名按 home/research/moment/collaborator/about 等用途组织 |
 | `templates/moment-template.html` | 创建新动态的完整 HTML 模板 |
 | `sitemap.xml` | 正式公开页面地址，包括各条动态 |
 | `robots.txt`、`.nojekyll`、`assets/favicon.svg` | 站点辅助文件，应保留 |
 | `publications.bib` | 文献导出资料；网页论文列表不会自动读取它 |
 | `README.md` | 本维护指南，不是网页正文 |
-| `index.html` | 根地址入口，仅跳转到 home.html，日常不编辑 |
 
-### 本次文件名整理
+### 当前维护文件名
 
-archive.html 改为 moment.html，team.html 改为 collaborators.html，personal-information.html 改为 about.html，news.css 改为 moment-list.css。三个旧页面文件保留为自动跳转入口：archive.html → moment.html、team.html → collaborators.html、personal-information.html → about.html。访问旧链接会自动进入新页面，并保留 #文章编号；无需在旧文件维护正文。news.css 已更名为 moment-list.css。
-
-主页内容从 index.html 移到 home.html。index.html 仅作为网站根地址的入口跳转到 home.html，今后只编辑 home.html。全部导航、详情返回链接、首页动态脚本、模板与站点地图均使用新文件名。
+已恢复改名之前的文件地址，所有主页面都是实际内容页，不再使用改名跳转入口。后续按上表编辑；无需编辑 home.html、moment.html、collaborators.html 或 about.html，这些临时新名称已移除。
 
 ## 2. 在 GitHub 上编辑、上传和发布
 
@@ -61,7 +58,7 @@ archive.html 改为 moment.html，team.html 改为 collaborators.html，personal
 
 多个文件在网页编辑器中通常分别提交。新增动态建议按照片 → 详情页 → 列表 → 首页备用条目和 sitemap 的顺序，避免先发布尚不存在的链接。
 
-## 3. Home｜home.html
+## 3. Home｜index.html
 
 | 想改的部分 | 搜索位置 | 操作 |
 | --- | --- | --- |
@@ -70,10 +67,10 @@ archive.html 改为 moment.html，team.html 改为 collaborators.html，personal
 | 横幅介绍 | `home-hero-copy` | 修改 p 的文字 |
 | Research updates… 简介 | `overview-copy` | 修改 h2 内容 |
 | Research focus 四个关键词 | `focus-panel` | 修改四个 li；排列由 home.css 控制 |
-| Latest post | `news-list` | 此处是三条备用简讯；在线内容来自 moment.html |
-| More archive 按钮 | `href="moment.html"` | 保持指向 Moment 列表 |
+| Latest post | `news-list` | 此处是三条备用简讯；在线内容来自 archive.html |
+| More archive 按钮 | `href="archive.html"` | 保持指向 Moment 列表 |
 
-首页在线列表按 moment.html 的 datetime 从新到旧排序，自动显示最新三条，并沿用详情标题链接。**不要只修改首页简讯**：自动加载后会被 moment.html 内容覆盖。改简讯先改 Moment 列表，再同步详情页及首页备用内容。
+首页在线列表按 archive.html 的 datetime 从新到旧排序，自动显示最新三条，并沿用详情标题链接。**不要只修改首页简讯**：自动加载后会被 archive.html 内容覆盖。改简讯先改 Moment 列表，再同步详情页及首页备用内容。
 
 ## 4. Research｜research.html
 
@@ -99,7 +96,7 @@ archive.html 改为 moment.html，team.html 改为 collaborators.html，personal
 
 标题在图片文字上方；电脑左图右文，手机正文区上下排列。照片显示最大宽度 320px，普通图按 4:3 裁剪；竞争示意图的 research-image-diagram 类保留完整图。顶部横幅在手机仍是图文叠加。
 
-## 5. Moment｜moment.html 与独立详情页
+## 5. Moment｜archive.html 与独立详情页
 
 ### 当前列表与详情文件
 
@@ -125,7 +122,7 @@ archive.html 改为 moment.html，team.html 改为 collaborators.html，personal
 6. 搜索 `REPLACE`，替换标题、页面 title、description、简讯、详细文字、图片说明及图题。
 7. 两处日期（datetime 和显示日期）改成真实日期；分类改为 Field Work 或 Academic Exchange。
 8. canonical 地址改为 `https://jiayu147.github.io/moment-my-new-event.html`。
-9. 两处 Back to Moments 的 href 改为 `moment.html#my-new-event`，编号与列表 article id 一致。
+9. 两处 Back to Moments 的 href 改为 `archive.html#my-new-event`，编号与列表 article id 一致。
 10. 保存提交到 master。之后按 C 步骤将动态加入列表。
 
 ### B. 添加或更新详细文字、照片
@@ -168,7 +165,7 @@ archive.html 改为 moment.html，team.html 改为 collaborators.html，personal
 
 ### C. 将新动态添加到 Moment 与首页
 
-详情页创建完成后，打开 moment.html，在 news-list 内添加新条目：
+详情页创建完成后，打开 archive.html，在 news-list 内添加新条目：
 
 ```html
 <article class="news-item" id="my-new-event" aria-labelledby="my-new-event-title">
@@ -185,15 +182,15 @@ archive.html 改为 moment.html，team.html 改为 collaborators.html，personal
 </article>
 ```
 
-日期、分类、标题和简讯与详情页保持一致；id 必须唯一。按日期从新到旧排列。首页在线列表会自动取最新三条，无需另外写同步脚本；同时更新 home.html 的备用三条，将 id 与 aria-labelledby 改为对应的 home- 前缀版本。
+日期、分类、标题和简讯与详情页保持一致；id 必须唯一。按日期从新到旧排列。首页在线列表会自动取最新三条，无需另外写同步脚本；同时更新 index.html 的备用三条，将 id 与 aria-labelledby 改为对应的 home- 前缀版本。
 
 在 sitemap.xml 的结束 urlset 前加入正式详情地址。模板本身不用加入 sitemap 或导航。
 
 ### D. 更正已有简讯：三处同步
 
-1. moment.html 中这条 news-copy 的 p。
+1. archive.html 中这条 news-copy 的 p。
 2. 对应详情页 moment-summary 的 p，并按需同步 description。
-3. 属于首页最新三条时，home.html 中对应的备用 p。
+3. 属于首页最新三条时，index.html 中对应的备用 p。
 
 完整详细正文只在详情页修改，不复制到首页或列表。标题或日期有更正时，同步列表、详情标题/日期以及首页备用条目。
 
@@ -230,7 +227,7 @@ archive.html 改为 moment.html，team.html 改为 collaborators.html，personal
 
 同年新增只复制 article，不重复年份 section。新年份复制整个 section，修改年份、heading id 和 aria-labelledby，放在旧年份之前。DOI 的 href 与显示文字同时改；作者按论文原顺序。删除论文删除整个 article，空年份可删除整个 section。只改 publications.bib 不会更新网页。
 
-## 7. Collaborators｜collaborators.html
+## 7. Collaborators｜team.html
 
 Ctrl+F 搜索姓名。每人是 collaborator-section；姓名职位在 h2，头像在 collaborator-figure，介绍在 collaborator-copy，邮箱在 collaborator-contact。
 
@@ -244,7 +241,7 @@ Ctrl+F 搜索姓名。每人是 collaborator-section；姓名职位在 h2，头�
 
 邮箱链接和显示文字一起更新。删除人物删除完整 section；头像文件仅在全站不再引用时删除。顶部 It takes a village. 在 section-hero-copy 中。
 
-## 8. About｜about.html
+## 8. About｜personal-information.html
 
 导航名称是 About，页内大标题是 Personal information。顶部两段介绍在 section-hero-copy；个人照片与图注在 about-portrait。
 
@@ -262,7 +259,7 @@ Ctrl+F 搜索姓名。每人是 collaborator-section；姓名职位在 h2，头�
 
 ### 顶部与页脚
 
-每个 HTML 都独立保存 nav-logo、nav-menu 与 footer。改 Jiayu147、Coastal plant ecology、导航名称或页脚时，同步全部正式页面及模板；index.html 入口不包含导航，无需改。字号在 typography.css：站点名称 23px、副标题 14px、导航 16px，769–1000px 的导航 15px。
+每个 HTML 都独立保存 nav-logo、nav-menu 与 footer。改 Jiayu147、Coastal plant ecology、导航名称或页脚时，同步全部正式页面及模板；index.html 同样需要同步导航与页脚。字号在 typography.css：站点名称 23px、副标题 14px、导航 16px，769–1000px 的导航 15px。
 
 ### 背景图片对应表
 
@@ -279,13 +276,13 @@ Ctrl+F 搜索姓名。每人是 collaborator-section；姓名职位在 h2，头�
 
 ### 命名规则
 
-正式主页面使用导航名称小写，首页使用 home.html；动态详情使用 moment-简短英文主题.html。新图片建议使用 research-主题.jpg、moment-主题-序号.jpg、collaborator-姓名.jpg、about-用途.jpg。尽量小写和连字符，扩展名与实际文件一致。现有已引用图片保留当前名称，包括少数 .JPG；若改名必须同步所有 src，不能只改文件。
+主页面沿用对应表中的既有名称，首页使用 index.html；动态详情使用 moment-简短英文主题.html。新图片建议使用 research-主题.jpg、moment-主题-序号.jpg、collaborator-姓名.jpg、about-用途.jpg。尽量小写和连字符，扩展名与实际文件一致。现有已引用图片保留当前名称，包括少数 .JPG；若改名必须同步所有 src，不能只改文件。
 
 width/height 写原图真实像素；实际显示大小由 CSS 控制。图库最大 800px，照片保持原比例；头像为 3:4，Research 照片为 4:3。object-position 控制 CSS 裁剪中心，不改变上传原图。
 
 ### CSS 与缓存
 
-共享主题用 site-theme.css，专用布局用对应板块 CSS，字号优先看 typography.css。Moment 列表用 moment-list.css，详情用 moment.css，两者用途不同。修改 CSS 后更新所有引用页面的 ?v= 标记；普通改正文不用改 CSS 版本。后加载且优先级合适的规则覆盖前面的规则。
+共享主题用 site-theme.css，专用布局用对应板块 CSS，字号优先看 typography.css。Moment 列表用 news.css，详情用 moment.css，两者用途不同。修改 CSS 后更新所有引用页面的 ?v= 标记；普通改正文不用改 CSS 版本。后加载且优先级合适的规则覆盖前面的规则。
 
 ## 10. 检查、恢复与常用写法
 
@@ -312,7 +309,7 @@ HTML 不会把 Markdown 星号自动变成斜体。图片不显示先查路径�
 ```bash
 git pull --ff-only origin master
 # 修改需要更新的文件
-git add moment.html moment-my-new-event.html sitemap.xml
+git add archive.html moment-my-new-event.html sitemap.xml
 git commit -m "Add a new Moment"
 git push origin master
 ```
