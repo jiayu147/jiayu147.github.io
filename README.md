@@ -33,7 +33,7 @@
 
 **文件名与菜单名称不完全相同：Moment 使用 `archive.html`，Collaborators 使用 `team.html`。**
 
-日常维护以以上六个页面为准。
+六个主要页面之外，还有六个 `moment-*.html` 独立动态详情页。导航和页脚调整需要覆盖所有 HTML 页面。
 
 ### 样式与交互文件
 
@@ -41,13 +41,14 @@
 | --- | --- |
 | `styles.css` | 基础样式、导航、页脚和早期样式 |
 | `site-theme.css` | 全站深绿主题、统一页面宽度、次级页面横幅与响应式布局 |
-| `typography.css` | 全站正文字号，通常最后加载 |
+| `typography.css` | 全站正文字号、顶部站点名称与导航字号，通常最后加载 |
 | `home.css` | 首页横幅、简介、Research focus 等专用布局 |
 | `research.css` | Research 标题与左图右文排版 |
 | `publications.css` | Publications 横幅和论文列表 |
 | `collaborators.css` | 合作者介绍及竖向头像排版 |
 | `about.css` | About 背景、个人照片和图注 |
 | `news.css` | Home 和 Moment 的动态列表 |
+| `moment.css` | 动态详情页的简讯、分隔线、详细正文、图片与图题 |
 | `script.js` | 首页动态同步、手机菜单、当前导航高亮 |
 
 `publications.bib` 不会自动生成网页中的论文列表；更新论文请编辑 `publications.html`。
@@ -89,7 +90,7 @@
         <span>Field Work</span>
     </div>
     <div class="news-copy">
-        <h3 id="new-fieldwork-title">Your new title</h3>
+        <h3 id="new-fieldwork-title"><a href="moment-new-fieldwork.html">Your new title</a></h3>
         <p>Your description about <em>Acanthus ilicifolius</em>.</p>
     </div>
 </article>
@@ -110,13 +111,13 @@
 
 `script.js` 在首页加载时读取 `archive.html`，按每条动态的 `datetime` 从新到旧排序，选取前三条，并保留标题指向独立详情页的链接。
 
-**正常情况下，新增动态只需修改 `archive.html`，首页会自动同步最新三条。**
+**修改已有简讯后，首页在线列表会自动同步。新增动态还需要创建对应详情页，并设置标题链接；首页会自动显示最新三条及这些链接。**
 
 `index.html` 还包含三条备用动态；如果浏览器不能读取 Moment，或禁用了 JavaScript，会显示这三条备用内容。维护首页时可以顺便更新它们。
 
 日期、文章 `id`、标题 `<h3>` 和现有的 `news-list` / `news-item` 类名应保留正确格式，以便自动同步。
 
-## 5. 新增论文
+## 5. Publications：新增、修改与删除论文
 
 打开 `publications.html`，在对应年份的 `<section class="publication-year">` 内复制一个完整的论文条目：
 
@@ -135,9 +136,11 @@
 - 新年份需要复制一整段 `publication-year`，同时修改年份标题、`id` 和 `aria-labelledby`。
 - 年份从新到旧排列，当前顺序为标题、作者、期刊、DOI。
 
-## 6. 更新 Research、Collaborators 和 About
+## 6. Research、Collaborators 和 About：逐项维护
 
 ### Research
+
+当前顺序：Plant clonality → Mesocosm arrays → Plant interactions。修改顶部介绍时，找到 `section-hero-copy`，两句话分别保留在两个 `<p>` 中。
 
 编辑 `research.html`。每个研究方向是一个完整的 `research-topic` 区块：标题在上，下方左图右文。复制或移动时，按整个 `<section>` 区块操作。
 
@@ -170,6 +173,8 @@
 修改姓名、职位、介绍、邮箱、图片路径和唯一编号。`width` / `height` 填图片本身的像素尺寸；网页显示尺寸由 CSS 控制。当前头像为最大宽度 120 像素、竖向 3:4 比例，电脑端通常显示为 120 × 160。
 
 ### About
+
+页面标题是 Personal information，导航名称仍为 About。顶部两段介绍在 `section-hero-copy` 中；兴趣爱好也在第二个段落。个人头像和图注在 `about-portrait` 中，背景照片与个人头像是两张独立图片。
 
 编辑 `personal-information.html`。个人经历、基金、Contact、Address 分别位于独立的内容区块中。邮箱链接修改时，`mailto:` 后的地址和显示地址一起更新。
 
@@ -241,7 +246,7 @@ HTML 文件不是 Markdown：写 `*Acanthus*` 不会自动变成斜体，应使�
 
 ## 10. 导航、页脚与辅助文件
 
-导航和页脚分别写在每个 HTML 页面里。修改全站菜单或页脚信息时，要同步修改六个主要页面。
+导航和页脚分别写在每个 HTML 页面里。修改全站菜单、站点名称或页脚信息时，要同步修改所有 HTML 页面，包括六个主要页面和目前六个动态详情页。
 
 新增页面时，可复制现有页面保留公共结构，再修改页面标题、正文、当前导航项和专用样式引用。若要把新页面加入导航，也要同步更新其他页面的导航。
 
@@ -292,30 +297,227 @@ git push origin master
 
 如修改多个文件，把它们一起列在 `git add` 后。推送需要已配置的 GitHub 登录认证。之后仍需等待 Pages 部署，并检查线上结果。
 
+
+## 12. Home：具体修改位置
+
+打开 `index.html`，在编辑器中用 Ctrl+F 搜索下列关键词：
+
+| 要更新的内容 | 搜索位置 | 操作 |
+| --- | --- | --- |
+| 顶部 Jiayu147 / Coastal plant ecology | `nav-logo` | 修改 `<span>` / `<small>` 内文字；其他页面同样修改 |
+| 首页背景 | `home-hero-photo` | 修改 `src`，并填写新图片的实际 `width`、`height` |
+| 首页两行大标题 | `Rapid Changing Coastal` | 修改两个 `<span>` 内文字，保留两个 span 以维持分行 |
+| 横幅介绍 | `home-hero-copy` | 替换段落内容 |
+| 首页中部简介 | `overview-copy` | 修改 `<h2>` 中句子 |
+| Research focus 四个关键词 | `focus-panel` | 修改四个 `<li>`；两行两列由 `home.css` 控制 |
+| 最新三条动态 | `news-list` | 在线内容来自 `archive.html`；这里的三条用于加载失败或禁用 JS 时备用 |
+| More archive | `href="archive.html"` | 保持指向动态列表 |
+
+修改首页最新简讯时，先改 `archive.html`，再同步 `index.html` 的备用条目。不要只改首页，否则自动加载后会被动态列表中的文字覆盖。
+
+## 13. Moment：列表、详情、照片的完整更新流程
+
+### 13.1 当前六条动态与详情文件
+
+| 日期 | 内容 | 详情文件 |
+| --- | --- | --- |
+| 2026-10-02 | 月度 Acanthus 野外实验 | `moment-clonal-acanthus-monthly.html` |
+| 2026-09-19 | Go belowground 课程 | `moment-go-belowground-2026.html` |
+| 2026-08-21 | Acanthus 野外调查 | `moment-acanthus-field-investigation.html` |
+| 2026-05-17 | 武汉会议 | `moment-eco-evolutionary-wuhan.html` |
+| 2026-04-10 | Třeboň 团队交流 | `moment-jitka-group-trebon.html` |
+| 2026-04-02 | Konstanz MGCP 会议 | `moment-mgcp-konstanz.html` |
+
+第一条已有详细正文和两张照片；其余五条的详细正文目前是 `to be updated`。所有详情页都采用简讯 → 横线 → 详细正文的结构。
+
+### 13.2 更正一条已有简讯
+
+例如修改参与人员，需要同步以下位置：
+
+1. `archive.html`：找到对应文章的 `id`，修改 `news-copy` 内的 `<p>`。
+2. 对应 `moment-*.html`：修改 `moment-summary` 内同一句简讯；若 `<meta name="description">` 也使用该句，则一并修改。
+3. 如果这条属于首页最新三条，修改 `index.html` 中对应备用简讯。
+4. 如果改标题或日期，同步详情页的 `<title>`、`<h1>`、`<time>`。分类也应与列表一致。
+
+`archive.html` 与详情页是独立 HTML 文件，详情页简讯不会自动读取列表；首页在线列表会读取 `archive.html`，但首页备用文字也需要手工同步。
+
+### 13.3 为已有动态补充详细正文
+
+打开对应详情文件，搜索 `moment-body`，将 `<p>to be updated</p>` 替换为完整介绍：
+
+```html
+<div class="moment-summary">
+    <p>这里保留列表中的简讯。</p>
+</div>
+<hr class="moment-divider">
+<div class="moment-body">
+    <p>第一段详细介绍，学名写作 <em>Acanthus ilicifolius</em>。</p>
+    <p>第二段详细介绍。</p>
+    <p>第三段详细介绍。</p>
+</div>
+```
+
+简讯为 16px；详细正文桌面为 18px，手机为 17px。横线使用 `moment-divider`。填写详细正文不需要把长文复制到列表或首页，列表继续显示简讯。
+
+### 13.4 在正文末尾添加两张照片
+
+先将照片上传到 `assets/`，再在 `moment-body` 的最后一个段落后、该 div 的结束标签前加入：
+
+```html
+<div class="moment-gallery">
+    <figure>
+        <img src="assets/my-event-photo-1.jpg"
+             alt="第一张照片的具体内容"
+             width="1706" height="1279" loading="lazy">
+        <figcaption>第一张照片的图题。</figcaption>
+    </figure>
+    <figure>
+        <img src="assets/my-event-photo-2.jpg"
+             alt="第二张照片的具体内容"
+             width="2048" height="1536" loading="lazy">
+        <figcaption>第二张照片的图题。</figcaption>
+    </figure>
+</div>
+```
+
+将示例文件名与尺寸换成实际照片信息。当前 `moment-gallery` 两张图在电脑和手机上均并列、居中，图片按原比例显示，图题在对应图片下方自动换行。只有一张照片时，可直接放一个 `<figure>`，不使用双列 gallery。不同长宽比的两张图可能高度不同；需要整齐时可先准备相同比例的照片。
+
+2026-10-02 的照片文件是 `assets/moment-acanthus-mesocosms.jpg` 和 `assets/moment-fieldwork-mud.jpg`，图题在对应详情页的 `<figcaption>` 修改。
+
+### 13.5 新增一条带详情页的动态
+
+1. 确定独一无二的编号，例如 `fieldwork-2026-11`，和详情文件名 `moment-fieldwork-2026-11.html`。
+2. 复制一份现有详情页代码。在仓库根目录选择 **Add file → Create new file**，填入新文件名，粘贴代码。
+3. 修改 `<title>`、`description`、`canonical`、日期、分类、`<h1>`、`moment-summary`、`moment-body`。
+4. 两处 Back to Moments 链接都改为 `archive.html#fieldwork-2026-11`。不要把文章编号留成复制来源的编号。
+5. 在 `archive.html` 列表最前面添加第 4 节的 article 模板，将文章 id、标题 id、aria-labelledby、日期、分类和简讯全部改好；标题链接为 `moment-fieldwork-2026-11.html`。
+6. 在 `sitemap.xml` 的 `</urlset>` 前加入一行：
+
+```xml
+<url><loc>https://jiayu147.github.io/moment-fieldwork-2026-11.html</loc></url>
+```
+
+7. 更新首页备用三条，保留 `home-` 前缀，标题链接指向详情页。
+8. 提交后检查 Moment 标题、首页最新三条、详情页以及 Back to Moments 是否都能正常进入。
+
+GitHub 网页编辑通常一次提交一个文件。建议按照片 → 详情页 → 列表链接 → 首页备用条目和 sitemap 的顺序提交，避免先发布链接而页面尚未创建。若想让多个文件一次发布，可在电脑上修改完整仓库后通过 Git 一次提交。
+
+### 13.6 删除一条动态
+
+从 `archive.html` 删除完整 article；检查 `index.html` 备用列表，补齐新的前三条。删除对应详情页前先确认没有其他链接引用，并从 sitemap 删除其地址。照片只有确认全站不再引用时才删除。已分享过的详情地址删除后会失效，可选择只从列表移除、保留详情页。
+
+## 14. Research：修改、增加和排序研究方向
+
+每个方向的结构如下，新增时建议复制现有完整 section，再替换内容：
+
+```html
+<section class="content-section research-topic" aria-labelledby="new-topic-heading">
+    <div class="container research-topic-layout">
+        <h2 id="new-topic-heading">New research topic</h2>
+        <figure class="research-figure">
+            <img class="research-image" src="assets/new-research.jpg"
+                 alt="图片内容说明" width="1200" height="900" loading="lazy">
+        </figure>
+        <div class="research-copy">
+            <p>研究说明第一段。</p>
+            <p>研究说明第二段。</p>
+        </div>
+    </div>
+</section>
+```
+
+标题整体位于图片和文字上方；电脑端左图右文，手机端正文区会上下排列。此规则与手机顶部横幅不同：横幅始终图文叠加。调换方向顺序时移动整段 section，不能只移动标题。
+
+竞争示意图带有专用类名以完整展示；更换为普通照片时参考另外两个方向的图片类名。若示意图需要继续完整显示，保留原有 `research-image-diagram` 类名。
+
+## 15. Publications：新年份、作者与 DOI
+
+同年新增论文只需复制 `publication-item` 放在对应年份 section 内。新年份则复制整个 section，例如：
+
+```html
+<section class="publication-year" aria-labelledby="year-2026">
+    <h2 class="year-heading" id="year-2026">2026</h2>
+    <article class="publication-item">
+        <h3>Paper title</h3>
+        <div class="authors">Wang JY, Author B, Author C</div>
+        <div class="journal"><em>Journal name</em>, volume, article number</div>
+        <a class="doi" href="https://doi.org/10.xxxx/example"
+           target="_blank" rel="noopener noreferrer">https://doi.org/10.xxxx/example</a>
+    </article>
+</section>
+```
+
+新年份放在旧年份之前，年份标题 id 与 aria-labelledby 成对修改。作者按论文原始顺序填写，标题在作者上方。删除论文时删除整个 article；某年没有论文后，可删除该年的整个 section。网页不读取 `publications.bib`，可另外维护该文件作为文献导出资料。
+
+## 16. Collaborators 与 About：头像、联系方式和经历
+
+### Collaborators
+
+在 `team.html` 搜索姓名。介绍和邮箱位于 `collaborator-copy`；头像路径在该人的 `collaborator-figure` 中。上传新头像后修改 `src`、`alt`、实际像素尺寸。头像显示比例由 CSS 裁剪为竖向 3:4，最大宽度 120px。
+
+新增人物复制完整 `collaborator-section`，修改 heading id 和 aria-labelledby，避免两个人共用编号。按 section 在文件中的顺序显示。为某个人调整裁剪时，可以给头像增加独立类名，并在 `collaborators.css` 设置 `object-position`，例如 `.portrait-new-person { object-position: center 15%; }`。
+
+邮箱需要同时更新 `<a href="mailto:...">` 和中间显示文字。调整背景简介 It takes a village. 时，修改顶部 `section-hero-copy` 的 `<p>`。
+
+### About
+
+在 `personal-information.html` 搜索以下标题，修改后面的段落：
+
+- Postdoctoral work experience：单位、任职时间、合作导师。
+- Education experience：学位、学院、学校、年份、导师；新增学历增加一个 `<p>`。
+- Foundation：基金名称、项目题目和执行年份；多个项目可以分段。
+- Contact：姓名、代称、办公室和邮箱。
+- Address：各单位的完整通信地址。
+
+头像图注在 `about-portrait` 的 `<figcaption>`，背景图片在 `section-hero-photo`。若更新全站邮箱，页脚中的 Email 链接也要在所有 HTML 页面同步更新。直接修改 About 的 Contact 不会自动改变页脚。
+
+## 17. 顶部导航、背景照片与手机适配
+
+### 顶部文字大小
+
+`typography.css` 中的最终规则控制：Jiayu147 23px、Coastal plant ecology 14px、导航 16px。769–1000px 宽度的导航为 15px，减少拥挤。手机采用折叠菜单。调整这些字号时搜索 `nav-logo`、`nav-logo small`、`nav-menu a`，不要修改横幅 h1 来替代导航字号。
+
+### 各页面背景文件
+
+| 页面 | 背景文件 | 主要布局文件 |
+| --- | --- | --- |
+| Home | `assets/coastal-ecotone.jpg` | `home.css` |
+| Research | `assets/mesocosms.jpg` | `site-theme.css` |
+| Moment | `assets/moments-coastal-train.jpg` | `site-theme.css`，HTML 中有裁剪位置 |
+| Publications | `assets/publications-storytelling.jpg` | `publications.css` |
+| Collaborators | `assets/collaborators-field.jpg` | `site-theme.css` |
+| About | `assets/about-coast.jpg` | `site-theme.css`、`about.css` |
+
+更换背景时在对应 HTML 搜索表中的文件名，修改 src 和原图尺寸。背景使用 `object-fit: cover` 自动裁剪填满横幅；电脑与手机都让文字覆盖在照片上，深绿渐变帮助文字保持清晰。不要把手机背景图片改为 `position: relative` 或 `height: auto`，否则会重新变为文字和图片上下分开。
+
+需要单独调整一张背景的裁剪中心，可在该 img 的现有 style 中设置：
+
+```html
+style="object-position: center 65%;"
+```
+
+百分比越大，通常越偏向图片下部。先在手机和电脑检查主体是否完整。若需要两个屏幕使用不同位置，移除内联 object-position，给图片独立类名，在对应 CSS 和手机 media 中分别设置，避免内联样式覆盖手机规则。Publications 图片有 Storytelling 文字，更换或裁剪时检查这段文字能否看清。
+
+### 缓存版本与部署
+
+共享 CSS 修改后，搜索所有引用该文件的 HTML，并将 `?v=...` 更新为一个新标记，例如 `?v=20261101a`。不要只更新首页。当前网站没有自动模板生成步骤，导航和页脚也是每页独立保存的。
+
+README 仅是维护指南，修改它不会改变网站正文。`script.js` 负责首页动态、导航高亮和手机菜单；普通内容更新一般不需要修改它。`.nojekyll`、`robots.txt`、`sitemap.xml` 和 `assets/favicon.svg` 应保留。
+
+## 18. 发布前后的逐项检查
+
+1. 修改前确认 master 是最新版本。如果同时在 GitHub 和电脑上编辑，先拉取最新内容，避免覆盖自己的另一次更新。
+2. 核对 HTML 开始和结束标签，编号唯一，标题链接与实际文件名一致。
+3. 图片已上传，大小写与 src 完全一致；width/height 是图片原尺寸，不是页面显示尺寸。
+4. 每条动态的标题、日期、分类和简讯在列表及详情页一致；首页备用内容也检查。
+5. 学名使用 `<em>`，邮箱、DOI、返回链接可点击。
+6. 等待 Actions 最新 Pages 部署完成，再打开线上页面。
+7. 电脑和手机分别检查导航、顶部背景裁剪、文字清晰度、图题与正文换行。
+
+如提交后发现错误，可重新编辑并提交修正。需要恢复旧文字时，在文件的 History 中打开之前的版本，复制需要恢复的内容，再回到当前版本编辑提交；这样不会覆盖其他文件的新修改。
+
 ## 官方参考
 
 - [GitHub：编辑文件](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files)
 - [GitHub：上传文件](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository)
 - [GitHub Pages：配置发布来源](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
-
-## Moment 详情页：正文与照片
-
-每条简讯的标题现在链接到独立的 `moment-条目id.html`，首页自动沿用该链接。简讯在 `archive.html` 编辑，完整介绍在对应详情页编辑；修改标题或摘要时请同步相关详情页。
-
-新增一条动态时：
-
-1. 在 `archive.html` 添加简讯，标题写为 `<h3><a href="moment-new-story.html">标题</a></h3>`，保留唯一条目 id 和日期。
-2. 复制已有 `moment-*.html` 为 `moment-new-story.html`，修改标题、日期、分类、description、canonical 地址，以及返回链接中的条目 id。
-3. 在 `<div class="moment-body">` 中增加正文段落，每段用 `<p>...</p>`。拉丁学名使用 `<em>...</em>`。
-4. 将照片上传到 `assets/`，在正文中增加下面的图片块。替换文件名、图片描述、实际尺寸和说明；可以添加多个图片块。图片按原比例显示，手机宽度自动适配。
-5. 将详情页地址添加到 `sitemap.xml`。首页会自动同步最新三条及其详情链接，建议同时更新 `index.html` 的备用条目。
-
-```html
-<figure>
-    <img src="assets/new-story-photo.jpg" alt="照片中展示的内容"
-         loading="lazy" width="1200" height="800">
-    <figcaption>照片说明。</figcaption>
-</figure>
-```
-
-详情页的排版由 `moment.css` 控制。当前详情页沿用已有简讯正文，等待补充各活动的完整文字和对应照片；HTML 注释内提供了图片模板，不会在页面显示。
