@@ -33,7 +33,7 @@
 
 **文件名与菜单名称不完全相同：Moment 使用 `archive.html`，Collaborators 使用 `team.html`。**
 
-`species.html` 和 `life.html` 是保留的旧页面，目前不在主导航中。日常维护以以上六个页面为准。
+日常维护以以上六个页面为准。
 
 ### 样式与交互文件
 
@@ -50,7 +50,7 @@
 | `news.css` | Home 和 Moment 的动态列表 |
 | `script.js` | 首页动态同步、手机菜单、当前导航高亮 |
 
-`app.js` 目前未被页面引用。`publications.bib` 不会自动生成网页中的论文列表；更新论文请编辑 `publications.html`。
+`publications.bib` 不会自动生成网页中的论文列表；更新论文请编辑 `publications.html`。
 
 ## 3. 直接在 GitHub 网页上更新
 
