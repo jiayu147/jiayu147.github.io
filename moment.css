@@ -19,5 +19,6 @@
 .site-page .moment-summary p { font-size: 16px; line-height: 1.75; color: #596c61; margin: 0; max-width: none; }
 .moment-divider { border: 0; border-top: 1px solid #ccd8cf; margin: 28px 0; }
 .moment-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 3vw, 24px); max-width: 800px; margin: 32px auto 0; align-items: start; }
-.moment-body .moment-gallery figure { min-width: 0; margin: 0; text-align: center; }
-.moment-body .moment-gallery figcaption { text-wrap: balance; }
+.moment-gallery figure { min-width: 0; margin: 0; text-align: center; }
+.moment-gallery img { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 8px; }
+.moment-gallery figcaption { color: #596c61; font-size: 14px; line-height: 1.6; margin-top: 10px; text-wrap: balance; }
