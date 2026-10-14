@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const latest = document.querySelector('.home-page .news-list');
         if (!latest) return;
         try {
-            const response = await fetch('archive.html', { cache: 'no-cache' });
+            const response = await fetch('moment.html', { cache: 'no-cache' });
             if (!response.ok) return;
             const archive = new DOMParser().parseFromString(await response.text(), 'text/html');
             const posts = Array.from(archive.querySelectorAll('.news-list .news-item'))
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 entry.setAttribute('aria-labelledby', heading.id);
                 const link = document.createElement('a');
                 const sourceLink = post.querySelector('h3 a');
-                link.setAttribute('href', sourceLink?.getAttribute('href') || 'archive.html#' + encodeURIComponent(post.id));
+                link.setAttribute('href', sourceLink?.getAttribute('href') || 'moment.html#' + encodeURIComponent(post.id));
                 link.innerHTML = sourceLink ? sourceLink.innerHTML : heading.innerHTML;
                 heading.replaceChildren(link);
                 return entry;
@@ -68,10 +68,10 @@ document.addEventListener('DOMContentLoaded', function () {
         mobile.addEventListener('change', function () { setMenu(false); });
     }
 
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const currentPage = window.location.pathname.split('/').pop() || 'home.html';
     document.querySelectorAll('.nav-menu a').forEach(function (link) {
         const target = link.getAttribute('href').split('/').pop();
-        const active = target === currentPage || (currentPage.startsWith('moment-') && target === 'archive.html');
+        const active = target === currentPage || (currentPage.startsWith('moment-') && target === 'moment.html');
         link.classList.toggle('active', active);
         if (active) link.setAttribute('aria-current', 'page');
         else link.removeAttribute('aria-current');
