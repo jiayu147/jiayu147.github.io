@@ -14,3 +14,10 @@
     .news-meta { flex-direction: row; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; }
     .site-page .news-list .news-copy h3 { font-size: 20px; }
 }
+
+/* Moment pagination keeps hidden rows out of the grid layout. */
+#moment-list .news-item[hidden] { display: none; }
+.moment-pagination { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 28px 0; }
+.site-page .moment-pagination a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 8px 14px; border: 1px solid #ccd8cf; border-radius: 4px; color: #254b40; text-decoration: none; }
+.site-page .moment-pagination a:hover { background: #e8eee5; }
+.site-page .moment-pagination a[aria-current="page"] { background: #254b40; border-color: #254b40; color: #fff; }
