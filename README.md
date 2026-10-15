@@ -329,6 +329,8 @@ Ctrl+F 搜索姓名。每人是 collaborator-section；姓名职位在 h2，头�
 
 主页面沿用对应表中的既有名称，首页使用 index.html；动态详情使用 moment-简短英文主题.html。新图片建议使用 research-主题.jpg、moment-主题-序号.jpg、collaborator-姓名.jpg、about-用途.jpg。尽量小写和连字符，扩展名与实际文件一致。现有已引用图片保留当前名称，包括少数 .JPG；若改名必须同步所有 src，不能只改文件。
 
+内容图片（动态照片、研究配图、个人照片及合作者头像）点击后会在新标签页打开仓库中保存的原图；背景横幅保留装饰用途。新增或更换图片时，图片 src 与外层 a 的 href 必须同时更新；Moment 模板已包含原图链接。“原图”指上传到 assets 的文件，不会恢复上传前的分辨率。
+
 width/height 写原图真实像素；实际显示大小由 CSS 控制。图库最大 800px，照片保持原比例；头像为 3:4，Research 照片为 4:3。object-position 控制 CSS 裁剪中心，不改变上传原图。
 
 ### 上传图片建议
