@@ -144,6 +144,7 @@
 
 | 日期 | 网页标题 | 详情文件 | 列表编号 |
 | --- | --- | --- | --- |
+| 2026-10-15 | A fantastic talk by Jiajia Liu from Fudan University | `moment-jiajia-liu-lecture.html` | `jiajia-liu-lecture` |
 | 2026-10-02 | Monthly field experiment of clonal Acanthus finished in Zhangjiang Estuary | `moment-clonal-acanthus-monthly.html` | `clonal-acanthus-monthly` |
 | 2026-09-19 | Attending the Go belowground 2026 training course in Czech Republic | `moment-go-belowground-2026.html` | `go-belowground-2026` |
 | 2026-08-21 | The field investigation of clonal Acanthus in Zhangjiang Estuary | `moment-acanthus-field-investigation.html` | `acanthus-field-investigation` |
