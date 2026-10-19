@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Communicating with new and old friends during 17-18 October in the conference of biological invasion and global change held in Shaoxing.">
+    <title>Be extroversive in the conference | Jiayu147</title>
+    <link rel="canonical" href="https://jiayu147.github.io/moment-shaoxing-conference.html">
+    <link rel="stylesheet" href="styles.css?v=20261013c">
+    <link rel="stylesheet" href="site-theme.css?v=20261013e">
+    <link rel="stylesheet" href="typography.css?v=20261014b">
+    <link rel="stylesheet" href="moment.css?v=20261014d">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body class="site-page home-body moment-page">
+    <nav class="navbar" aria-label="Primary navigation">
+        <div class="nav-container">
+            <a class="nav-logo" href="index.html"><span>Jiayu147</span><small>Coastal plant ecology</small></a>
+            <ul class="nav-menu" id="site-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="archive.html" class="active" aria-current="page">Moment</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="team.html">Collaborators</a></li>
+                <li><a href="personal-information.html">About</a></li>
+            </ul>
+            <button class="hamburger" type="button" aria-label="Open navigation menu" aria-controls="site-menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+    <main class="main-content standard-page">
+        <article class="moment-detail" aria-labelledby="moment-title">
+            <a class="text-link" href="archive.html#shaoxing-conference">← Back to Moments</a>
+            <header class="moment-header">
+                <div class="moment-meta"><time datetime="2026-10-19">2026-10-19</time><span>Academic exchange</span></div>
+                <h1 id="moment-title">Be extroversive in the conference</h1>
+            </header>
+            <div class="moment-summary">
+                <p>Communicating with new and old friends during 17-18 October in the conference of biological invasion and global change held in Shaoxing.</p>
+            </div>
+            <hr class="moment-divider">
+            <div class="moment-body">
+                <p>What the most impressive matter I learned during this conference is that, we early career researcher are building our own academic collaboring network which is first developed during conference. Attending conference is a good chance for our early career researchers to seek other researchers that we are interested in the same career, to communicate with them, and learn from each other.</p>
+                <p>Last week, Xiong Shi, the postdoc from Peking University asked me whether I will attend the conference in Shaoxing. It is his courage that push me to make the decision to attend the conference. We first met in Konstanz and kept in touch since then. He is an early career reseacher finished his phD in the University of Konstanz, working with Mark van Kleunen. He has published several high-quality papers focusing on multiple global change factors and biological invasions. Others like Xiao Xu from Kunming, Yingbo Yang from Lanzhou, Ruiling Liu from Shanghai, Xin Zhou from Nanjing, Junnan Liu from Shenyang, etc. I learned a lot from them, including not only the academic way of storytelling, but also their ability of social contact.</p>
+                <p>We have the same research interests and that is why we gathered together in Shaoxing. Although we are at different academic stages, we are willing to share not only our recent studies but also the research experience no matter they are happy or disappointing. Communication sometimes gives us power to persist on and go ahead. I think that attending conference should be a good start to build the academic collaborating network with these early career researchers.</p>
+
+            </div>
+            <a class="text-link moment-return" href="archive.html#shaoxing-conference">← Back to Moments</a>
+        </article>
+    </main>
+    <footer class="footer home-footer">
+        <div class="content-wrap footer-inner">
+            <div><strong>Jiayu Wang</strong><p>College of the Environment and Ecology, Xiamen University</p></div>
+            <div class="footer-links"><a href="mailto:wangjy147@foxmail.com">Email</a><a href="personal-information.html">About</a></div>
+            <p class="copyright">© 2026 Jiayu Wang</p>
+        </div>
+    </footer>
+    <script src="script.js?v=20261014e"></script>
+</body>
+</html>
