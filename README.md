@@ -146,6 +146,7 @@ Moment 列表底部提供页码，每页显示 10 条动态；超过 10 条时�
 
 | 日期 | 网页标题 | 详情文件 | 列表编号 |
 | --- | --- | --- | --- |
+| 2026-10-29 | An Essay in “A Pocket Guide to Scientific Writing and Publishing” | `moment-scientific-writing.html` | `scientific-writing` |
 | 2026-10-15 | A fantastic talk by Jiajia Liu from Fudan University | `moment-jiajia-liu-lecture.html` | `jiajia-liu-lecture` |
 | 2026-10-02 | Monthly field experiment of clonal Acanthus finished in Zhangjiang Estuary | `moment-clonal-acanthus-monthly.html` | `clonal-acanthus-monthly` |
 | 2026-09-19 | Attending the Go belowground 2026 training course in Czech Republic | `moment-go-belowground-2026.html` | `go-belowground-2026` |
