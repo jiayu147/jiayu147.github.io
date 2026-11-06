@@ -121,7 +121,7 @@ Moment 列表底部提供页码，每页显示 10 条动态；超过 10 条时�
 - [ ] 必做：复制模板到根目录，创建详情页；删除 base 和 noindex，替换内容、日期、canonical 与返回链接（A、B）。
 - [ ] 必做：在 archive.html 添加条目，核对标题、日期、分类、简讯和详情链接（C）。
 - [ ] 有条件：新增或修改后，最新三条的内容或顺序发生变化时，同步 index.html 的备用三条（C、D）。仅补充旧动态的详细正文无需修改首页。
-- [ ] 必做：在 sitemap.xml 添加新详情页地址，在下方文件索引表增加一行。
+- [ ] 必做：在 sitemap.xml 添加新详情页地址。
 - [ ] 必做：部署成功后，检查列表、详情、返回链接、照片及首页（E）。
 
 ### 编号与链接对应关系
@@ -142,21 +142,9 @@ Moment 列表底部提供页码，每页显示 10 条动态；超过 10 条时�
 
 详情页的 `moment-title` 是该页面内部的标题 id，可保留；不同 HTML 文件之间允许使用相同 id，同一文件内不能重复。
 
-### 当前列表与详情文件
+列表与详情分别保存，改简讯需要同步两处。完整正文只在详情页编辑。模板：[templates/moment-template.html](templates/moment-template.html)。
 
-| 日期 | 网页标题 | 详情文件 | 列表编号 |
-| --- | --- | --- | --- |
-| 2026-10-29 | An Essay in “A Pocket Guide to Scientific Writing and Publishing” | `moment-scientific-writing.html` | `scientific-writing` |
-| 2026-10-15 | A fantastic talk by Jiajia Liu from Fudan University | `moment-jiajia-liu-lecture.html` | `jiajia-liu-lecture` |
-| 2026-10-02 | Monthly field experiment of clonal Acanthus finished in Zhangjiang Estuary | `moment-clonal-acanthus-monthly.html` | `clonal-acanthus-monthly` |
-| 2026-09-19 | Attending the Go belowground 2026 training course in Czech Republic | `moment-go-belowground-2026.html` | `go-belowground-2026` |
-| 2026-08-21 | The field investigation of clonal Acanthus in Zhangjiang Estuary | `moment-acanthus-field-investigation.html` | `acanthus-field-investigation` |
-| 2026-05-17 | Attending the conference of eco-evolutionary dynamics in a changing world in Wuhan | `moment-eco-evolutionary-wuhan.html` | `eco-evolutionary-wuhan` |
-| 2026-04-10 | Happy to meet Jitka’s group in Czech Republic | `moment-jitka-group-trebon.html` | `jitka-group-trebon` |
-| 2026-04-02 | MGCP Conference in Konstanz University | `moment-mgcp-konstanz.html` | `mgcp-konstanz` |
-| 2025-10-31 | Biomass harvesting and clonal traits measuring of salt marshes finished in Zhangjiang Estuary | `moment-saltmarsh-experiment.html` | `clonal-saltmarsh-experiment` |
-
-以实际文件为准；新增活动时在此表增加一行。列表与详情分别保存，改简讯需要同步两处。完整正文只在详情页编辑。模板：[templates/moment-template.html](templates/moment-template.html)。
+维护约定：README 不再保存逐条动态的文件索引；以后新增或修改 Moment 时，不新增或恢复该索引。实际动态以 archive.html 及其标题链接指向的详情文件为准。
 
 ### A. 新增动态：复制模板
 
@@ -173,7 +161,7 @@ Moment 列表底部提供页码，每页显示 10 条动态；超过 10 条时�
 
 ### B. 添加或更新详细文字、照片
 
-已有动态无需重新复制完整模板：按本节开头的“当前列表与详情文件”表找到对应详情文件，点击铅笔修改。
+已有动态无需重新复制完整模板：在 archive.html 中找到该动态的标题链接，按其 href 打开对应详情文件，点击铅笔修改。
 
 **添加文字：**搜索 `class="moment-body"`。每段文字写在 `<p>...</p>` 中；把 `<p>to be updated</p>` 替换为完整介绍。学名用 `<em>...</em>`。简讯位于上方 moment-summary 内，横线是 `<hr class="moment-divider">`，它们与详细正文独立。
 
@@ -238,7 +226,7 @@ Moment 列表底部提供页码，每页显示 10 条动态；超过 10 条时�
 </url>
 ```
 
-同时在本节的“当前列表与详情文件”表增加一行。模板本身不用加入 sitemap 或导航。
+模板本身不用加入 sitemap 或导航。
 
 ### D. 更正已有简讯：三处同步
 
@@ -387,7 +375,7 @@ Windows 若找不到 python，可尝试 `py -m http.server 8000`。保持终端�
 git pull --ff-only origin master
 # 修改需要更新的文件
 git status --short
-git add archive.html moment-my-new-event.html sitemap.xml README.md
+git add archive.html moment-my-new-event.html sitemap.xml
 # 有新照片时，另行暂存实际新增的图片
 # git add assets/moment-my-new-event-1.jpg
 # 最新三条发生变化时，暂存已同步的首页备用内容
