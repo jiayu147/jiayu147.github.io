@@ -398,3 +398,9 @@ git push origin master
 ```
 
 需先安装 Git、克隆仓库并配置 GitHub 认证；git pull 前确认本地修改已妥善保存。上方示例中的图片和首页命令以 # 注释，适用时去掉 # 并替换为实际路径后执行。提交前检查暂存文件是否齐全，仅添加本次更新涉及的文件。README 修改只改变本指南，不改变网页正文。
+
+## 个人主页二维码
+
+扫描二维码即可访问个人主页：[https://jiayu147.github.io/](https://jiayu147.github.io/)。
+
+<a href="https://jiayu147.github.io/"><img src="assets/homepage-qr.png" alt="Jiayu Wang 个人主页二维码" width="264" height="264"></a>
